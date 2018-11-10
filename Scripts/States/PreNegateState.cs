@@ -6,14 +6,15 @@ namespace WFS
 	public class PreNegateState : State
 	{
 		private NegateActionsState negateState = null;
-		public ShaderMaterial material;
+		private ShaderMaterial material;
 
-        private const float transitionTime = 1.5f;
-        private float elapsedTime = 0.0f;
+		private const float transitionTime = 1.5f;
+		private float elapsedTime = 0.0f;
 
 		public PreNegateState(GameController controller, List<Action> actions)
 		{
 			negateState = new NegateActionsState(controller, actions);
+			material = (ShaderMaterial)GD.Load("res://NegativeShaderMaterial.material");
 		}
 		
 		public override State Update(float delta)

@@ -5,7 +5,7 @@ namespace WFS
 	public class PreRecordState : State
 	{
 		private RecordActionsState state = null;
-		public ShaderMaterial material;
+		private ShaderMaterial material;
 
 		private const float transitionTime = 1.5f;
 		private float elapsedTime = transitionTime;
@@ -13,6 +13,7 @@ namespace WFS
 		public PreRecordState(GameController controller, int attacksCount)
 		{
 			state = new RecordActionsState(controller, attacksCount);
+			material = (ShaderMaterial)GD.Load("res://NegativeShaderMaterial.material");
 		}
 		
 		public override State Update(float delta)

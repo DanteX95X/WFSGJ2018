@@ -35,6 +35,7 @@ namespace WFS
 				GD.Print("New action " + currentAction.ToString());
 				--actionsCount;
 				actions.Add(currentAction);
+				//attacker.Reset();
 				
 				if (actionsCount <= 0)
 				{

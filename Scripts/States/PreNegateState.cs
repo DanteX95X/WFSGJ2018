@@ -14,9 +14,16 @@ namespace WFS
 		
 		public override State Update(float delta)
 		{
-			GD.Print("Negating attacks");
 			//TODO: lifes odpierdalaj tutaj
-			return negateState;
+			if (Input.IsActionPressed("ui_accept"))
+			{
+				GD.Print("Negating attacks");
+				return negateState;
+			}
+			else
+			{
+				return this;
+			}
 		}
 	}
 }

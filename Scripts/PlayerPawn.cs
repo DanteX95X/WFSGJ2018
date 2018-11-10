@@ -17,6 +17,10 @@ namespace WFS
         private int healthCurrent;
         private int healthMax;
 
+        private float timer = 1;
+        private float timePassed = 0;
+        private bool set = false;
+
         private Dictionary<Action, string> actionToAnimation;
         public override void _Ready()
         {
@@ -44,46 +48,56 @@ namespace WFS
 
         public override void _Process(float delta)
         {
-            string animationStr = InputCheck(second);
+            timePassed += delta;
 
-            if (animationStr != "Idle")
+            //if (movementState == Action.Timeout)
+            if(!set)
             {
-                if (defend == true)
-                {
-                    animationStr += "Defend";
-                }
-                else
-                {
-                    animationStr += "Attack";
-                }
-            }
+                string animationStr = InputCheck(second);
 
-            SetAnimation(animationStr);
+                if (animationStr != "Idle")
+                {
+                    if (defend == true)
+                    {
+                        animationStr += "Defend";
+                    }
+                    else
+                    {
+                        animationStr += "Attack";
+                    }
+                }
+
+                SetAnimation(animationStr);
+            }
         }
 
         private string InputCheck(bool second)
         {
-            if (Input.IsActionPressed(second ? "ui_up_second" : "ui_up"))
+            if (Input.IsActionJustReleased(second ? "ui_up_second" : "ui_up"))
             {
                 movementState = Action.PositiveFirst;
+                set = true;
             }
-            else if (Input.IsActionPressed(second ? "ui_right_second" : "ui_right"))
+            else if (Input.IsActionJustReleased(second ? "ui_right_second" : "ui_right"))
             {
                 movementState = Action.PositiveSecond;
+                set = true;
             }
-            else if (Input.IsActionPressed(second ? "ui_left_second" : "ui_left"))
+            else if (Input.IsActionJustReleased(second ? "ui_left_second" : "ui_left"))
             {
                 movementState = Action.NegativeSecond;
+                set = true;
             }
-            else if (Input.IsActionPressed(second ? "ui_down_second" : "ui_down"))
+            else if (Input.IsActionJustReleased(second ? "ui_down_second" : "ui_down"))
             {
                 movementState = Action.NegativeFirst;
+                set = true;
             }
             else
             {
-                movementState = Action.Timeout;
+                //movementState = Action.Timeout;
             }
-
+            
             return actionToAnimation[movementState];
         }
 
@@ -95,14 +109,28 @@ namespace WFS
         public void Reset()
         {
             movementState = Action.Timeout;
+            set = false;
         }
 
         Action IActionProvider.ProvideAction()
         {
-            return movementState;
+            Action temp = movementState;
+            movementState = Action.Timeout;
+            set = false;
+            return temp;
         }
 
-        public bool IsPerformingAction => false;
+        public bool IsPerformingAction
+        {
+            get
+            {
+//                bool value = timePassed <= timer;
+//                if (!value)
+//                    timePassed = 0;
+//                return value;
+                return false;
+            }
+        }
 
         public int Health
         {

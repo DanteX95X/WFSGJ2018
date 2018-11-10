@@ -6,17 +6,20 @@ namespace WFS
 	public class PreNegateState : State
 	{
 		private NegateActionsState negateState = null;
-		private ShaderMaterial material;
+		
 
-		private const float transitionTime = 1.5f;
+		private float transitionTime;
 		private float elapsedTime = 0.0f;
 
 		private bool canChangeState;
 
+		static int sign = 1;
+		static bool isSignInit = false;
+
 		public PreNegateState(GameController controller, List<Action> actions)
 		{
+			transitionTime = (float)Global.config.GetValue("Config", "TransitionTime");
 			negateState = new NegateActionsState(controller, actions);
-			material = (ShaderMaterial)GD.Load("res://NegativeShaderMaterial.material");
 			canChangeState = false;
 			GD.Print("Transition to negate attacks");
 		}
@@ -26,9 +29,6 @@ namespace WFS
 			if (!canChangeState)
 			{
 				elapsedTime += delta;
-				float suwaczekValue = elapsedTime / transitionTime;
-				material?.SetShaderParam("suwaczek", suwaczekValue);
-
 				if (elapsedTime >= transitionTime)
 				{
 					canChangeState = true;

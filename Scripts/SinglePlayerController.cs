@@ -23,11 +23,8 @@ namespace WFS
 			}
 			
 			turn = 1;
-		}
-
-		public override void _Process(float delta)
-		{
 			
+			state = new SP_RecordActionsState(this, turn);
 		}
 	}
 }

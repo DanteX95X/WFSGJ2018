@@ -6,9 +6,9 @@ namespace WFS
 	public class RecordActionsState : State
 	{
 		private int actionsCount;
-		private BaseController controller;
+		protected BaseController controller;
 		private IActionProvider attacker;
-		private List<Action> actions = new List<Action>();
+		protected List<Action> actions = new List<Action>();
 		
 		//temp hack
 		private float timer = 0;

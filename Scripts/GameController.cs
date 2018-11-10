@@ -30,6 +30,8 @@ namespace WFS
 			players.Add((IActionProvider) GetNode("Player1"));
 			players.Add((IActionProvider) GetNode("Player2"));
 
+			fightLabel = (Label)GetNode("FightLabel");
+			
 			foreach (var player in players)
 			{
 				player.controller = this;
@@ -42,6 +44,8 @@ namespace WFS
 		
 		public override void _Process(float delta)
 		{
+			ProcessFightLabel(delta);
+
 			state = state?.Update(delta);
 		}
 	}

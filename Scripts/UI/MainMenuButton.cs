@@ -3,15 +3,17 @@ using System;
 
 public class MainMenuButton : Button
 {	
-private void _on_MultiPlayerButton_button_up()
-{
-	WFS.Global global = (WFS.Global)GetNode("/root/Global");
-	global.GotoScene("res://Scenes/Root.tscn");
-}
-
-private void _on_SinglePlayerButton_button_up()
-{
-	WFS.Global global = (WFS.Global)GetNode("/root/Global");
-	global.GotoScene("res://Scenes/Root.tscn");
-}
+	private void _on_MultiPlayerButton_button_up()
+	{
+		WFS.Global global = (WFS.Global)GetNode("/root/Global");
+		global.singlePlayer = false;
+		global.GotoScene("res://Scenes/HeroSelector.tscn");
+	}
+	
+	private void _on_SinglePlayerButton_button_up()
+	{
+		WFS.Global global = (WFS.Global)GetNode("/root/Global");
+		global.singlePlayer = true;
+		global.GotoScene("res://Scenes/HeroSelector.tscn");
+	}
 }

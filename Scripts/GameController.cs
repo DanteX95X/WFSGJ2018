@@ -19,13 +19,16 @@ namespace WFS
 	public class GameController : Node
 	{
 		private State state;
-		
+
+		//TODO: make it sensible
+		public IActionProvider Attacker => new MockPlayer();
+		public IActionProvider Defender => new MockPlayer();
 		
 		public override void _Ready()
 		{
 			GD.Print("Controller started");
 			
-			state = new RecordActionsState(new MockPlayer(), 4);
+			state = new RecordActionsState(this, 4);
 		}
 		
 		public override void _Process(float delta)

@@ -36,7 +36,7 @@ namespace WFS
 				
 				if (actionsCount <= 0)
 				{
-					return new NegateActionsState(controller, actions);
+					return new PreNegateState(controller, actions);
 				}
 			}
 			return this;

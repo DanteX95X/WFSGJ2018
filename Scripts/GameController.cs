@@ -28,7 +28,7 @@ namespace WFS
 		{
 			GD.Print("Controller started");
 			
-			state = new RecordActionsState(this, 4);
+			state = new PreRecordState(this, 4);
 		}
 		
 		public override void _Process(float delta)

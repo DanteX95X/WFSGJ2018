@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Godot;
 
 namespace WFS
@@ -23,11 +24,15 @@ namespace WFS
 			iterator = 0;
 
 			this.timer = (float)controller.Config.GetValue("Config", "DefendTime");
-			GD.Print("Timer " + this.timer);
 		}
 		
 		public override State Update(float delta)
 		{
+			if (recordedActions.Count == 0)
+			{
+				return new PreRecordState(controller, ++controller.Turn);
+			}
+			
 			if (defender.IsPerformingAction)
 				return this;
 			
@@ -41,8 +46,9 @@ namespace WFS
 				}
 				else
 				{
-					GD.Print("Raptot zjebałeś! " + negativeAction.ToString());
+					GD.Print("Wrong action! " + negativeAction.ToString());
 					--defender.Health;
+					GD.Print("HP " + defender.Health);
 					if (defender.Health <= 0)
 					{
 						GD.Print("Game over");
@@ -53,7 +59,7 @@ namespace WFS
 				++iterator;
 				if (iterator >= recordedActions.Count)
 				{
-					return null;
+					return new PreRecordState(controller, ++controller.Turn);
 				}
 			}
 			else
@@ -64,6 +70,7 @@ namespace WFS
 					timePassed = 0;
 					GD.Print("Timeout!");
 					--defender.Health;
+					GD.Print("HP " + defender.Health);
 					if (defender.Health <= 0)
 					{
 						GD.Print("Game over");
@@ -73,7 +80,7 @@ namespace WFS
 					++iterator;
 					if (iterator >= recordedActions.Count)
 					{
-						return null;
+						return new PreRecordState(controller, ++controller.Turn);
 					}
 				}
 			}

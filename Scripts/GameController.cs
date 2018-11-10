@@ -17,6 +17,12 @@ namespace WFS
 		//TODO: make it sensible
 		public IActionProvider Attacker => players[attackerIndex];
 		public IActionProvider Defender => players[attackerIndex];
+
+		public int Turn
+		{
+			get { return turn; }
+			set { turn = value; }
+		}
 		
 		public override void _Ready()
 		{
@@ -27,10 +33,10 @@ namespace WFS
 
 			players.Add((IActionProvider) GetNode("Player1"));
 			players.Add((IActionProvider) GetNode("Player2"));
-			turn = 0;
+			turn = 1;
 			attackerIndex = 0;
 			
-			state = new PreRecordState(this, 4);
+			state = new PreRecordState(this, turn);
 		}
 		
 		public override void _Process(float delta)

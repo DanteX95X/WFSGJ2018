@@ -15,6 +15,7 @@ namespace WFS
 
 		static int sign = 1;
 		static bool isSignInit = false;
+        private BaseController controller;
 
 		public PreNegateState(BaseController controller, List<Action> actions)
 		{
@@ -24,6 +25,7 @@ namespace WFS
 			GD.Print("Transition to negate attacks");
 			controller.Attacker.Animate(Action.Timeout);
 			controller.Defender.Animate(Action.Timeout);
+            this.controller = controller;
 		}
 		
 		public override State Update(float delta)
@@ -40,6 +42,7 @@ namespace WFS
 			{
 				if (Input.IsActionJustReleased("ui_accept"))
 				{
+                    controller.ResetDefendLabel();
 					GD.Print("Negating attacks");
 					return negateState;
 				}

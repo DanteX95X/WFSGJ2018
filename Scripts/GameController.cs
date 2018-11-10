@@ -31,6 +31,10 @@ namespace WFS
 			players.Add((IActionProvider) GetNode("Player2"));
 
 			fightLabel = (Label)GetNode("FightLabel");
+            fightLabelTimeMax = 1.0f;
+
+            defendLabel = (Label)GetNode("DefendLabel");
+            defendLabelTimeMax = 1.0f;
 			
 			foreach (var player in players)
 			{
@@ -44,7 +48,7 @@ namespace WFS
 		
 		public override void _Process(float delta)
 		{
-			ProcessFightLabel(delta);
+			ProcessLabels(delta);
 
 			state = state?.Update(delta);
 		}

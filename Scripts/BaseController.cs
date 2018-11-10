@@ -31,7 +31,7 @@ namespace WFS
             defendLabelTimer = 0;
         }
 		
-		public void ProcessFightLabel(float delta)
+		public void ProcessLabels(float delta)
 		{
 			//Process Timers
 			fightLabelTimer += delta;
@@ -40,6 +40,15 @@ namespace WFS
 			{
 				fightLabel.Hide();
 			}
+
+            defendLabelTimer += delta;
+
+			if (defendLabelTimer > defendLabelTimeMax)
+			{
+				defendLabel.Hide();
+			}
+
+
 		}
 		
 		public int Turn

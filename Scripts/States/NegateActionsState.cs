@@ -38,19 +38,27 @@ namespace WFS
 			else
 			{
 				GD.Print("Raptot zjebałeś!");
+				--defender.Health;
 			}
 
-			++iterator;
-			if (iterator >= recordedActions.Count)
-			{
-				return null;
-			}
-			
 			timePassed += delta;
 			if (timePassed >= timer)
 			{
 				timePassed = 0;
 				GD.Print("Raptot zjebałeś!");
+				--defender.Health;
+			}
+
+			if (defender.Health <= 0)
+			{
+				GD.Print("Game over");
+				return null;
+			}
+			
+			++iterator;
+			if (iterator >= recordedActions.Count)
+			{
+				return null;
 			}
 
 			return this;

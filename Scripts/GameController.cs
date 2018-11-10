@@ -5,6 +5,8 @@ namespace WFS
 {
 	internal class MockPlayer : IActionProvider
 	{
+		private int health = 3;
+		
 		public bool IsPerformingAction
 		{
 			get { return false; }
@@ -17,8 +19,8 @@ namespace WFS
 
 		public int Health
 		{
-			get { return 1; }
-			set { }
+			get { return health; }
+			set { health = value; }
 		}
 	}
 	

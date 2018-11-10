@@ -67,7 +67,6 @@ namespace WFS
 						animationStr += "Attack";
 					}
 				}
-
                 
 				SetAnimation(animationStr);
 			}

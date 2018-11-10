@@ -2,52 +2,58 @@ using Godot;
 
 namespace WFS
 {
-	public class PreRecordState : State
-	{
-		private RecordActionsState state = null;
+    public class PreRecordState : State
+    {
+        private RecordActionsState state = null;
 
-		private float transitionTime;
-		private float elapsedTime = 0.0f;
+        private float transitionTime;
+        private float elapsedTime = 0.0f;
 
-		static int sign = 1;
-		static bool isSignInit = false;
+        static int sign = 1;
+        static bool isSignInit = false;
 
-		private ShaderMaterial material;
+        private ShaderMaterial material;
 
-		public PreRecordState(GameController controller, int attacksCount)
-		{
-			transitionTime = (float)Global.config.GetValue("Config", "TransitionTime");
-			if (!isSignInit)
-			{
-				sign = (int)Global.config.GetValue("Config", "InitTransitionSign");
-				isSignInit = true;
-			}
-			else
-				sign = -sign;
 
-			state = new RecordActionsState(controller, attacksCount);
+        GameController controller;
 
-			if (material == null)
-				material = (ShaderMaterial)GD.Load("res://NegativeShaderMaterial.material");
+        public PreRecordState(GameController controller, int attacksCount)
+        {
+            transitionTime = (float)Global.config.GetValue("Config", "TransitionTime");
+            if (!isSignInit)
+            {
+                sign = (int)Global.config.GetValue("Config", "InitTransitionSign");
+                isSignInit = true;
+            }
+            else
+                sign = -sign;
 
-			GD.Print("Transition to record attacks");
-		}
-		
-		public override State Update(float delta)
-		{
-			elapsedTime += delta;
-			float suwaczekValue = 0.0f;
-			if (sign == 1)
-				suwaczekValue = sign * (elapsedTime / transitionTime);
-			else if (sign == -1)
-				suwaczekValue = 1 + sign * (elapsedTime / transitionTime);
+            this.controller = controller;
+            controller.ResetFightLabel();
 
-			material?.SetShaderParam("suwaczek", suwaczekValue);
+            state = new RecordActionsState(controller, attacksCount);
 
-			if (elapsedTime >= transitionTime)
-				return state;
-			else
-				return this;
-		}
-	}
+            if (material == null)
+                material = (ShaderMaterial)GD.Load("res://NegativeShaderMaterial.material");
+
+            GD.Print("Transition to record attacks");
+        }
+
+        public override State Update(float delta)
+        {
+            elapsedTime += delta;
+            float suwaczekValue = 0.0f;
+            if (sign == 1)
+                suwaczekValue = sign * (elapsedTime / transitionTime);
+            else if (sign == -1)
+                suwaczekValue = 1 + sign * (elapsedTime / transitionTime);
+
+            material?.SetShaderParam("suwaczek", suwaczekValue);
+
+            if (elapsedTime >= transitionTime)
+                return state;
+            else
+                return this;
+        }
+    }
 }

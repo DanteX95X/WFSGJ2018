@@ -16,10 +16,20 @@ namespace WFS
         public float fightLabelTimer;
         public float fightLabelTimeMax;
 
+        public Label defendLabel;
+        public float defendLabelTimer;
+        public float defendLabelTimeMax;
+
         public void ResetFightLabel()
         {
             fightLabel.Show();
             fightLabelTimer = 0;
+        }
+
+        public void ResetDefendLabel()
+        {
+            defendLabel.Show();
+            defendLabelTimer = 0;
         }
 
         public void ProcessFightLabel(float delta)

@@ -11,7 +11,7 @@ namespace WFS
 		private List<Action> actions = new List<Action>();
 		
 		//temp hack
-		private float timer = 2.0f;
+		private float timer = 0;
 		private float timePassed;
 		
 		public RecordActionsState(GameController controller, int actionsCount)

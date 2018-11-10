@@ -14,7 +14,7 @@ namespace WFS
 
 		private ShaderMaterial material;
 
-		public PreRecordState(GameController controller, int attacksCount)
+		public PreRecordState(BaseController controller, int attacksCount)
 		{
 			transitionTime = (float)Global.config.GetValue("Config", "TransitionTime");
 			if (!isSignInit)

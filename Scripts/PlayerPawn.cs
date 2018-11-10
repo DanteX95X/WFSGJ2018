@@ -21,7 +21,7 @@ namespace WFS
 		private bool isAnimating = false;
 
 		
-		public GameController controller { get; set; }
+		public BaseController controller { get; set; }
 		
 		private Dictionary<Action, string> actionToAnimation;
 		public override void _Ready()

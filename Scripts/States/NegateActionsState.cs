@@ -6,7 +6,7 @@ namespace WFS
 {
 	public class NegateActionsState : State
 	{
-		private GameController controller;
+		private BaseController controller;
 		private List<Action> recordedActions;
 		private IActionProvider defender;
 		private IActionProvider attacker;
@@ -15,7 +15,7 @@ namespace WFS
 		private float timer;
 		private float timePassed;
 		
-		public NegateActionsState(GameController controller, List<Action> recordedActions)
+		public NegateActionsState(BaseController controller, List<Action> recordedActions)
 		{
 			this.controller = controller;
 			this.defender = controller.Defender;

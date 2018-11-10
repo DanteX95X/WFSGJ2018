@@ -40,6 +40,7 @@ namespace WFS
 			if (negativeAction != Action.Timeout)
 			{
 				timePassed = 0;
+				defender.Reset();
 				if (negativeAction == recordedActions[iterator])
 				{
 					GD.Print("OK");

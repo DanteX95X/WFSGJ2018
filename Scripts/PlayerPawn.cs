@@ -99,6 +99,7 @@ namespace WFS
         public void Reset()
         {
             movementState = Action.Timeout;
+            timePassed = 0;
         }
 
         Action IActionProvider.ProvideAction()
@@ -110,13 +111,7 @@ namespace WFS
 
         public bool IsPerformingAction
         {
-            get
-            {
-                bool value = timePassed <= timer;
-                if (!value)
-                    timePassed = 0;
-                return value;
-            }
+            get { return timePassed <= timer; }
         }
 
         public int Health

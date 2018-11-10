@@ -1,42 +1,42 @@
 [gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/PlayerPawn.cs" type="Script" id=1]
-[ext_resource path="res://Textures/Idle.png" type="Texture" id=2]
-[ext_resource path="res://Textures/DownAttack.png" type="Texture" id=3]
-[ext_resource path="res://Textures/DownDefend.png" type="Texture" id=4]
-[ext_resource path="res://Textures/LeftDefend.png" type="Texture" id=5]
-[ext_resource path="res://Textures/LeftAttack.png" type="Texture" id=6]
+[ext_resource path="res://Textures/DownAttack.png" type="Texture" id=2]
+[ext_resource path="res://Textures/UpDefend.png" type="Texture" id=3]
+[ext_resource path="res://Textures/RightAttack.png" type="Texture" id=4]
+[ext_resource path="res://Textures/LeftAttack.png" type="Texture" id=5]
+[ext_resource path="res://Textures/DownDefend.png" type="Texture" id=6]
 [ext_resource path="res://Textures/UpAttack.png" type="Texture" id=7]
 [ext_resource path="res://Textures/RightDefend.png" type="Texture" id=8]
-[ext_resource path="res://Textures/RightAttack.png" type="Texture" id=9]
-[ext_resource path="res://Textures/UpDefend.png" type="Texture" id=10]
+[ext_resource path="res://Textures/LeftDefend.png" type="Texture" id=9]
+[ext_resource path="res://Textures/Idle.png" type="Texture" id=10]
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
-"name": "Idle",
+"name": "DownAttack",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
-"name": "DownAttack",
+"name": "UpDefend",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
-"name": "DownDefend",
+"name": "RightAttack",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
-"name": "LeftDefend",
+"name": "LeftAttack",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
-"name": "LeftAttack",
+"name": "DownDefend",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 7 ) ],
@@ -51,16 +51,16 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 9 ) ],
 "loop": true,
-"name": "RightAttack",
+"name": "LeftDefend",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 10 ) ],
 "loop": true,
-"name": "UpDefend",
+"name": "Idle",
 "speed": 5.0
 } ]
 
-[node name="Area2D" type="Area2D" index="0"]
+[node name="Area2D" type="Area2D"]
 
 position = Vector2( 299.38, 260.419 )
 input_pickable = true

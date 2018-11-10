@@ -24,5 +24,10 @@ namespace WFS
 			set => state = value;
 		}
 		
+		public override void _Process(float delta)
+		{
+			state = state?.Update(delta);
+		}
+		
 	}
 }

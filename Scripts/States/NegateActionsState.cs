@@ -6,7 +6,7 @@ namespace WFS
 {
 	public class NegateActionsState : State
 	{
-		private BaseController controller;
+		protected BaseController controller;
 		private List<Action> recordedActions;
 		private IActionProvider defender;
 		private IActionProvider attacker;

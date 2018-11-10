@@ -38,11 +38,6 @@ namespace WFS
 			turn = 1;
 			
 			state = new PreRecordState(this, turn);
-		}
-		
-		public override void _Process(float delta)
-		{
-			state = state?.Update(delta);
-		}
+		}		
 	}
 }

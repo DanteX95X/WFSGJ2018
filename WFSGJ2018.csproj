@@ -57,10 +57,13 @@
     <Compile Include="Scripts\Global.cs" />
     <Compile Include="Scripts\Interfaces\IActionProvider.cs" />
     <Compile Include="Scripts\SinglePlayerController.cs" />
+    <Compile Include="Scripts\SinglePlayerPawn.cs" />
     <Compile Include="Scripts\States\NegateActionsState.cs" />
     <Compile Include="Scripts\States\PreNegateState.cs" />
     <Compile Include="Scripts\States\PreRecordState.cs" />
     <Compile Include="Scripts\States\RecordActionsState.cs" />
+    <Compile Include="Scripts\States\SP_NegateActionsState.cs" />
+    <Compile Include="Scripts\States\SP_PreNegateState.cs" />
     <Compile Include="Scripts\States\SP_RecordActionsState.cs" />
     <Compile Include="Scripts\States\State.cs" />
     <Compile Include="Scripts\UI\HealthBar.cs" />

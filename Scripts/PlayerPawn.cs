@@ -9,7 +9,7 @@ namespace WFS
 		[Export]
 		public bool second;
 
-		private Action movementState;
+		protected Action movementState;
 		private AnimatedSprite animatedSprite;
         private Particles2D starEffect;
 		private int healthCurrent;
@@ -58,7 +58,7 @@ namespace WFS
 			
 			if (movementState == Action.Timeout && IsInputAllowed())
 			{
-				string animationStr = InputCheck(second);
+				InputCheck(second);
 			}
 			AnimateFrame();
 		}
@@ -95,7 +95,7 @@ namespace WFS
 			}
 		}
 		
-		private string InputCheck(bool second)
+		protected virtual void InputCheck(bool second)
 		{
 			if (Input.IsActionJustReleased(second ? "ui_up_second" : "ui_up"))
 			{
@@ -113,8 +113,6 @@ namespace WFS
 			{
 				movementState = Action.NegativeFirst;
 			}
-			
-			return actionToAnimation[movementState];
 		}
 
 		public void SetAnimation(string animationStr)

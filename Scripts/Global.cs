@@ -6,6 +6,8 @@ namespace WFS
 	public class Global : Node
 	{
 		static public ConfigFile config;
+
+		public bool singlePlayer = false;
 		public Node CurrentScene { get; set; }
 
 		public override void _Ready()

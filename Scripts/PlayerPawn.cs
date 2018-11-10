@@ -13,6 +13,7 @@ namespace WFS
 
 		private Action movementState;
 		private AnimatedSprite animatedSprite;
+        private Particles2D starEffect;
 		private int healthCurrent;
 		private int healthMax;
 
@@ -40,6 +41,7 @@ namespace WFS
 
 			movementState = Action.Timeout;
 			animatedSprite = (AnimatedSprite)GetNode("AnimatedSprite");
+            starEffect = (Particles2D)GetNode("StarEffect");
 
 			animatedSprite.FlipH = false;
 			animatedSprite.FlipV = false;
@@ -85,7 +87,6 @@ namespace WFS
 						animation += "Attack";
 					}
 				}
-
 				SetAnimation(animation);
 			}
 			else

@@ -35,6 +35,7 @@ namespace WFS
 			if (defender.IsPerformingAction)
 				return this;
 			
+			defender.Reset();
 			Action negativeAction = (Action)(-(int)defender.ProvideAction());
 			if (negativeAction != Action.Timeout)
 			{
@@ -55,7 +56,6 @@ namespace WFS
 					}
 				}
 
-				defender.Reset();
 				++iterator;
 				if (iterator >= recordedActions.Count)
 				{

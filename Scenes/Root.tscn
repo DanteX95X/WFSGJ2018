@@ -1,13 +1,15 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/GameController.cs" type="Script" id=1]
 [ext_resource path="res://Scenes/PlayerPawn.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Sound/276254__dynajinn__fight-voiceover-fight.wav" type="AudioStream" id=3]
 
 [node name="Root" type="Node" index="0"]
 
 [node name="GameController" type="Node" parent="." index="0"]
 
 script = ExtResource( 1 )
+_sections_unfolded = [ "Pause" ]
 
 [node name="Player1" parent="GameController" index="0" instance=ExtResource( 2 )]
 
@@ -66,6 +68,17 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect", "Visibility" ]
+
+[node name="Sounds" type="Node" parent="GameController" index="4"]
+
+[node name="FightSound" type="AudioStreamPlayer" parent="GameController/Sounds" index="0"]
+
+stream = ExtResource( 3 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
 
 
 [editable path="GameController/Player1"]

@@ -26,6 +26,8 @@ namespace WFS
 				sign = -sign;
 
             controller.ResetFightLabel();
+			AudioStreamPlayer stream = (AudioStreamPlayer)controller.GetNode("Sounds")?.GetNode("FightSound");
+			stream?.Play();
 
 			state = new RecordActionsState(controller, attacksCount);
 

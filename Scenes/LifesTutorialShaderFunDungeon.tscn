@@ -3,12 +3,12 @@
 [ext_resource path="res://NegativeShaderMaterial.material" type="Material" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 
-[node name="Node2D" type="Node2D" index="0"]
+[node name="Node2D" type="Node2D"]
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
 material = ExtResource( 1 )
-position = Vector2( 260.204, -111.477 )
+position = Vector2( 242.581, 339.162 )
 scale = Vector2( 6.77119, 4.12488 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Material", "Visibility" ]

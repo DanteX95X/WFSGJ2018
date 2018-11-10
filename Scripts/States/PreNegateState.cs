@@ -18,7 +18,7 @@ namespace WFS
 		
 		public override State Update(float delta)
 		{
-			GD.Print("Negating attacks");
+			GD.Print("Transition to negate attacks");
 			elapsedTime += delta;
 			float suwaczekValue = elapsedTime / transitionTime;
 			material?.SetShaderParam("suwaczek", suwaczekValue);

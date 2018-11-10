@@ -17,7 +17,7 @@ namespace WFS
 		
 		public override State Update(float delta)
 		{
-			GD.Print("Recording attacks");
+			GD.Print("Transition to record attacks");
 			elapsedTime -= delta;
 			float suwaczekValue = elapsedTime / transitionTime;
 			material?.SetShaderParam("suwaczek", suwaczekValue);

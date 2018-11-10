@@ -3,14 +3,9 @@ using System.Collections.Generic;
 
 namespace WFS
 {	
-	public class GameController : Node
-	{
-		private State state;
-		
-		List<IActionProvider> players = new List<IActionProvider>();
-		private int turn;
-		
-		public IActionProvider Attacker
+	public class GameController : BaseController
+	{	
+		public override IActionProvider Attacker
 		{
 			get
 			{
@@ -19,24 +14,13 @@ namespace WFS
 			}
 		}
 
-		public IActionProvider Defender
+		public override IActionProvider Defender
 		{
 			get
 			{
 				int index = turn % 2;
 				return players[index];
 			}
-		}
-
-		public int Turn
-		{
-			get { return turn; }
-			set { turn = value; }
-		}
-
-		public State CurrentState
-		{
-			get { return state; }
 		}
 		
 		public override void _Ready()

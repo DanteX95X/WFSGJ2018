@@ -7,8 +7,6 @@ namespace WFS
 	public class PlayerPawn : Area2D, IActionProvider
 	{
 		[Export]
-		public bool defend;
-		[Export]
 		public bool second;
 
 		private Action movementState;
@@ -78,7 +76,7 @@ namespace WFS
 				string animation = actionToAnimation[movementState];
 				if (animation != "Idle")
 				{
-					if (defend == true)
+					if (controller.Defender == this)
 					{
 						animation += "Defend";
 					}

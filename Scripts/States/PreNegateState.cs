@@ -36,7 +36,7 @@ namespace WFS
 			}
 			else
 			{
-				if (Input.IsActionPressed("ui_accept"))
+				if (Input.IsActionJustReleased("ui_accept"))
 				{
 					GD.Print("Negating attacks");
 					return negateState;

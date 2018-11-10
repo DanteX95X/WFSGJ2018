@@ -2,28 +2,7 @@ using Godot;
 using System.Collections.Generic;
 
 namespace WFS
-{
-//	internal class MockPlayer : IActionProvider
-//	{
-//		private int health = 3;
-//		
-//		public bool IsPerformingAction
-//		{
-//			get { return false; }
-//		}
-//		
-//		public Action ProvideAction()
-//		{
-//			return Action.NegativeFirst;
-//		}
-//
-//		public int Health
-//		{
-//			get { return health; }
-//			set { health = value; }
-//		}
-//	}
-	
+{	
 	public class GameController : Node
 	{
 		private State state;

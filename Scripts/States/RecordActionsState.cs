@@ -27,11 +27,13 @@ namespace WFS
 		public override State Update(float delta)
 		{
 			timePassed += delta;
+			attacker.Animate(attacker.ProvideAction());
 			if (timePassed >= timer)
 			{
 				timePassed = 0;
 
 				Action currentAction = attacker.ProvideAction();
+				attacker.Reset();
 				GD.Print("Recorded action " + currentAction.ToString());
 				--actionsCount;
 				

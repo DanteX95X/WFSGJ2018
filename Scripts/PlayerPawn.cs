@@ -19,6 +19,8 @@ namespace WFS
 		private float timer = 1;
 		private float timePassed = 0;
 
+		private bool isAnimating = false;
+
 		
 		public GameController controller { get; set; }
 		
@@ -49,32 +51,67 @@ namespace WFS
 		{
 			timePassed += delta;
 
-			if (movementState == Action.Timeout)
+			if (movementState == Action.Timeout && IsInputAllowed())
 			{
 				string animationStr = InputCheck(second);
 
-				if (animationStr != "Idle")
+//				if (animationStr != "Idle")
+//				{
+//					if (defend == true)
+//					{
+//						animationStr += "Defend";
+//					}
+//					else
+//					{
+//						animationStr += "Attack";
+//					}
+//				}
+				//Animate(movementState);
+
+				//SetAnimation(animationStr);
+			}
+			AnimateFrame();
+
+//			if (!IsInputAllowed())
+//			{
+//				movementState = Action.Timeout;
+//				SetAnimation("Idle");
+//			}
+		}
+
+		public void Animate(Action action)
+		{
+			movementState = action;
+			isAnimating = true;
+		}
+		
+		public void AnimateFrame()
+		{
+			if (IsPerformingAction)
+			{
+				string animation = actionToAnimation[movementState];
+				if (animation != "Idle")
 				{
 					if (defend == true)
 					{
-						animationStr += "Defend";
+						animation += "Defend";
 					}
 					else
 					{
-						animationStr += "Attack";
+						animation += "Attack";
 					}
 				}
 
-				SetAnimation(animationStr);
+				SetAnimation(animation);
 			}
-
-			if (!IsInputAllowed())
+			else
 			{
-				movementState = Action.Timeout;
+				isAnimating = false;
 				SetAnimation("Idle");
+				timePassed = 0;
 			}
 		}
-
+		
 		private string InputCheck(bool second)
 		{
 			if (Input.IsActionJustReleased(second ? "ui_up_second" : "ui_up"))
@@ -104,19 +141,20 @@ namespace WFS
 
 		public void Reset()
 		{
+			movementState = Action.Timeout;
+			isAnimating = false;
 			timePassed = 0;
 		}
 
 		Action IActionProvider.ProvideAction()
 		{
 			Action temp = movementState;
-			movementState = Action.Timeout;
 			return temp;
 		}
 
 		public bool IsPerformingAction
 		{
-			get { return timePassed <= timer; }
+			get { return isAnimating && timePassed <= timer; }
 		}
 
 		public int Health

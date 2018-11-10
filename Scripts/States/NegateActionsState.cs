@@ -9,6 +9,7 @@ namespace WFS
 		private GameController controller;
 		private List<Action> recordedActions;
 		private IActionProvider defender;
+		private IActionProvider attacker;
 		private int iterator;
 		
 		private float timer;
@@ -18,6 +19,7 @@ namespace WFS
 		{
 			this.controller = controller;
 			this.defender = controller.Defender;
+			this.attacker = this.controller.Attacker;
 			this.recordedActions = recordedActions;
 			timePassed = 0;
 			iterator = 0;
@@ -35,10 +37,17 @@ namespace WFS
 			if (defender.IsPerformingAction)
 				return this;
 			
-			defender.Reset();
+			if (iterator >= recordedActions.Count)
+			{
+				return new PreRecordState(controller, ++controller.Turn);
+			}
+			
 			Action negativeAction = (Action)(-(int)defender.ProvideAction());
 			if (negativeAction != Action.Timeout)
 			{
+				defender.Animate(defender.ProvideAction());
+				attacker.Animate(recordedActions[iterator]);
+				
 				timePassed = 0;
 				if (negativeAction == recordedActions[iterator])
 				{
@@ -57,10 +66,8 @@ namespace WFS
 				}
 
 				++iterator;
-				if (iterator >= recordedActions.Count)
-				{
-					return new PreRecordState(controller, ++controller.Turn);
-				}
+				return this;
+
 			}
 			else
 			{

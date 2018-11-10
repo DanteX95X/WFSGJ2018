@@ -22,6 +22,8 @@ namespace WFS
 			negateState = new NegateActionsState(controller, actions);
 			canChangeState = false;
 			GD.Print("Transition to negate attacks");
+			controller.Attacker.Animate(Action.Timeout);
+			controller.Defender.Animate(Action.Timeout);
 		}
 		
 		public override State Update(float delta)

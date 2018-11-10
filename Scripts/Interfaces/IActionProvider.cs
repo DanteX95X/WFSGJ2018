@@ -9,5 +9,6 @@ namespace WFS
 		int Health { get; set; }
 		void Reset();
 		GameController controller { set; }
+		void Animate(Action action);
 	}
 }

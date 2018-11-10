@@ -31,6 +31,9 @@ namespace WFS
 				material = (ShaderMaterial)GD.Load("res://NegativeShaderMaterial.material");
 
 			GD.Print("Transition to record attacks");
+			
+			controller.Attacker.Animate(Action.Timeout);
+			controller.Defender.Animate(Action.Timeout);
 		}
 		
 		public override State Update(float delta)

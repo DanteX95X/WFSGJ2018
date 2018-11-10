@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class MainScreen : Area2D
+public class GameController : Node
 {
     // Member variables here, example:
     // private int a = 2;
@@ -11,7 +11,8 @@ public class MainScreen : Area2D
     {
         // Called every time the node is added to the scene.
         // Initialization here
-        GD.Print("Hello from C# to Godot :)");
+        GD.Print("Controller started");
+        
     }
 
 //    public override void _Process(float delta)

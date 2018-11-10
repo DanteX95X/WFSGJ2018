@@ -11,7 +11,7 @@ script = ExtResource( 1 )
 
 [node name="Player1" parent="GameController" index="0" instance=ExtResource( 2 )]
 
-editor/display_folded = true
+second = true
 
 [node name="Player2" parent="GameController" index="1" instance=ExtResource( 2 )]
 

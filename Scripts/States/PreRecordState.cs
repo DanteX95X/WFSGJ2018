@@ -25,7 +25,7 @@ namespace WFS
 			else
 				sign = -sign;
 
-            //controller.ResetFightLabel();
+            controller.ResetFightLabel();
 
 			state = new RecordActionsState(controller, attacksCount);
 

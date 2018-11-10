@@ -69,6 +69,8 @@ namespace WFS
 					if (defender.Health <= 0)
 					{
 						GD.Print("Game over");
+						Global global = (Global)controller.GetNode("/root/Global");
+						global.GotoScene("res://Scenes/MainMenu.tscn");
 						return null;
 					}
 				}
@@ -89,6 +91,8 @@ namespace WFS
 					if (defender.Health <= 0)
 					{
 						GD.Print("Game over");
+						Global global = (Global)controller.GetNode("/root/Global");
+						global.GotoScene("res://Scenes/MainMenu.tscn");
 						return null;
 					}
 					

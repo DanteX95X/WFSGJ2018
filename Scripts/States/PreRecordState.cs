@@ -14,11 +14,11 @@ namespace WFS
 		{
 			state = new RecordActionsState(controller, attacksCount);
 			material = (ShaderMaterial)GD.Load("res://NegativeShaderMaterial.material");
+			GD.Print("Transition to record attacks");
 		}
 		
 		public override State Update(float delta)
 		{
-			GD.Print("Transition to record attacks");
 			elapsedTime -= delta;
 			float suwaczekValue = elapsedTime / transitionTime;
 			material?.SetShaderParam("suwaczek", suwaczekValue);

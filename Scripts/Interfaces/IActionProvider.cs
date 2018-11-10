@@ -7,5 +7,6 @@ namespace WFS
 		Action ProvideAction();
 		bool IsPerformingAction { get; }
 		int Health { get; set; }
+		void Reset();
 	}
 }

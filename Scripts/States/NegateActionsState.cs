@@ -11,7 +11,7 @@ namespace WFS
 		private int iterator;
 		
 		//temp hack
-		private float timer = 1;
+		private float timer;
 		private float timePassed;
 		
 		public NegateActionsState(GameController controller, List<Action> recordedActions)
@@ -23,6 +23,7 @@ namespace WFS
 			iterator = 0;
 
 			this.timer = (float)controller.Config.GetValue("Config", "DefendTime");
+			GD.Print("Timer " + this.timer);
 		}
 		
 		public override State Update(float delta)
@@ -31,34 +32,50 @@ namespace WFS
 				return this;
 			
 			Action negativeAction = (Action)(-(int)defender.ProvideAction());
-			if (negativeAction != Action.Timeout && negativeAction == recordedActions[iterator])
+			if (negativeAction != Action.Timeout)
 			{
-				GD.Print("OK");
+				timePassed = 0;
+				if (negativeAction == recordedActions[iterator])
+				{
+					GD.Print("OK");
+				}
+				else
+				{
+					GD.Print("Raptot zjebałeś! " + negativeAction.ToString());
+					--defender.Health;
+					if (defender.Health <= 0)
+					{
+						GD.Print("Game over");
+						return null;
+					}
+				}
+
+				++iterator;
+				if (iterator >= recordedActions.Count)
+				{
+					return null;
+				}
 			}
 			else
 			{
-				GD.Print("Raptot zjebałeś!");
-				--defender.Health;
-			}
-
-			timePassed += delta;
-			if (timePassed >= timer)
-			{
-				timePassed = 0;
-				GD.Print("Raptot zjebałeś!");
-				--defender.Health;
-			}
-
-			if (defender.Health <= 0)
-			{
-				GD.Print("Game over");
-				return null;
-			}
-			
-			++iterator;
-			if (iterator >= recordedActions.Count)
-			{
-				return null;
+				timePassed += delta;
+				if (timePassed >= timer)
+				{
+					timePassed = 0;
+					GD.Print("Timeout!");
+					--defender.Health;
+					if (defender.Health <= 0)
+					{
+						GD.Print("Game over");
+						return null;
+					}
+					
+					++iterator;
+					if (iterator >= recordedActions.Count)
+					{
+						return null;
+					}
+				}
 			}
 
 			return this;

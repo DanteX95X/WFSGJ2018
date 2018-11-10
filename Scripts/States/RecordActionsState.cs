@@ -32,7 +32,7 @@ namespace WFS
 				timePassed = 0;
 
 				Action currentAction = attacker.ProvideAction();
-				GD.Print("New action " + currentAction.ToString());
+				GD.Print("Recorded action " + currentAction.ToString());
 				--actionsCount;
 				actions.Add(currentAction);
 				

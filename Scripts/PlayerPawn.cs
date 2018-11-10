@@ -13,14 +13,22 @@ namespace WFS
 
         private Action movementState;
         private AnimatedSprite animatedSprite;
+        private ConfigFile config;
+        private int healthCurrent;
+        private int healthMax;
 
-        private Dictionary<Action,string> actionToAnimation;
+        private Dictionary<Action, string> actionToAnimation;
         public override void _Ready()
         {
+            config = new ConfigFile();
+            config.Load("res://GameConfig.cfg");
+            healthMax = (int)config.GetValue("Config", "InitHealth");
+            healthCurrent = healthMax;
+
             actionToAnimation = new Dictionary<Action, string>();
 
             actionToAnimation[Action.NegativeSecond] = "Left";
-            actionToAnimation[Action.NegativeFirst] = "Down";            
+            actionToAnimation[Action.NegativeFirst] = "Down";
             actionToAnimation[Action.Timeout] = "Idle";
             actionToAnimation[Action.PositiveFirst] = "Up";
             actionToAnimation[Action.PositiveSecond] = "Right";
@@ -98,9 +106,8 @@ namespace WFS
 
         public int Health
         {
-            get { throw new NotImplementedException();}
-            set { throw new NotImplementedException();}
-            
+            get { return healthCurrent; }
+            set { healthCurrent = value; }
         }
     }
 }

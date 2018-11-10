@@ -19,6 +19,9 @@ namespace WFS
 		private float timer = 1;
 		private float timePassed = 0;
 
+		
+		public GameController controller { get; set; }
+		
 		private Dictionary<Action, string> actionToAnimation;
 		public override void _Ready()
 		{
@@ -63,6 +66,12 @@ namespace WFS
 				}
 
 				SetAnimation(animationStr);
+			}
+
+			if (!IsInputAllowed())
+			{
+				movementState = Action.Timeout;
+				SetAnimation("Idle");
 			}
 		}
 
@@ -114,6 +123,11 @@ namespace WFS
 		{
 			get { return healthCurrent; }
 			set { healthCurrent = value; }
+		}
+
+		bool IsInputAllowed()
+		{
+			return (controller.Attacker == this && controller.CurrentState is RecordActionsState) || (controller.Defender == this && controller.CurrentState is NegateActionsState);
 		}
 	}
 }

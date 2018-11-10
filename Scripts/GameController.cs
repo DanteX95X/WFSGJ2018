@@ -9,10 +9,7 @@ namespace WFS
 		
 		List<IActionProvider> players = new List<IActionProvider>();
 		private int turn;
-		private int attackerIndex;
 		
-
-		//TODO: make it sensible
 		public IActionProvider Attacker
 		{
 			get
@@ -36,6 +33,11 @@ namespace WFS
 			get { return turn; }
 			set { turn = value; }
 		}
+
+		public State CurrentState
+		{
+			get { return state; }
+		}
 		
 		public override void _Ready()
 		{
@@ -43,8 +45,13 @@ namespace WFS
 
 			players.Add((IActionProvider) GetNode("Player1"));
 			players.Add((IActionProvider) GetNode("Player2"));
+
+			foreach (var player in players)
+			{
+				player.controller = this;
+			}
+			
 			turn = 1;
-			attackerIndex = 0;
 			
 			state = new PreRecordState(this, turn);
 		}

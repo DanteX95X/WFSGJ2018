@@ -17,6 +17,7 @@ namespace WFS
 
 		private AudioStreamPlayer gruntSound;
 		private AudioStreamPlayer evadeSound;
+		private AudioStreamPlayer koSound;
 		
 		public NegateActionsState(BaseController controller, List<Action> recordedActions)
 		{
@@ -31,6 +32,7 @@ namespace WFS
 
 			gruntSound = (AudioStreamPlayer)this.controller.GetNode("Sounds").GetNode("GruntSound");
 			evadeSound = (AudioStreamPlayer)this.controller.GetNode("Sounds").GetNode("EvadeSound");
+			koSound = (AudioStreamPlayer)this.controller.GetNode("Sounds").GetNode("KOSound");
 		}
 		
 		public override State Update(float delta)
@@ -68,6 +70,7 @@ namespace WFS
 					GD.Print("HP " + defender.Health);
 					if (defender.Health <= 0)
 					{
+						koSound.Play();
 						GD.Print("Game over");
 						return null;
 					}
@@ -88,6 +91,7 @@ namespace WFS
 					GD.Print("HP " + defender.Health);
 					if (defender.Health <= 0)
 					{
+						koSound.Play();
 						GD.Print("Game over");
 						return null;
 					}

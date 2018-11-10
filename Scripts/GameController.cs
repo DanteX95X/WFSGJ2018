@@ -5,6 +5,11 @@ namespace WFS
 {
 	internal class MockPlayer : IActionProvider
 	{
+		public bool IsPerformingAction
+		{
+			get { return false; }
+		}
+		
 		public Action ProvideAction()
 		{
 			return Action.NegativeFirst;

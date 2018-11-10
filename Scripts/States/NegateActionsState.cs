@@ -22,7 +22,10 @@ namespace WFS
 		}
 		
 		public override State Update(float delta)
-		{	
+		{
+			if (defender.IsPerformingAction)
+				return this;
+			
 			Action negativeAction = (Action)(-(int)defender.ProvideAction());
 			if (negativeAction != Action.Timeout && negativeAction == recordedActions[iterator])
 			{

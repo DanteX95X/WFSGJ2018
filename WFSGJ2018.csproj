@@ -52,6 +52,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scripts\MainScreen.cs" />
     <Compile Include="Scripts\PlayerPawn.cs" />
+    <Compile Include="Scripts\Enums\Action.cs" />
+    <Compile Include="Scripts\GameController.cs" />
+    <Compile Include="Scripts\Interfaces\IActionProvider.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

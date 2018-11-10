@@ -95,7 +95,7 @@ namespace WFS
 
 		public void Reset()
 		{
-			movementState = Action.Timeout;
+			timePassed = 0;
 		}
 
 		Action IActionProvider.ProvideAction()

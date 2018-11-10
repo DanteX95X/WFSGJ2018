@@ -13,8 +13,23 @@ namespace WFS
 		
 
 		//TODO: make it sensible
-		public IActionProvider Attacker => players[attackerIndex];
-		public IActionProvider Defender => players[attackerIndex];
+		public IActionProvider Attacker
+		{
+			get
+			{
+				int index = turn % 2;
+				return players[1-index];
+			}
+		}
+
+		public IActionProvider Defender
+		{
+			get
+			{
+				int index = turn % 2;
+				return players[index];
+			}
+		}
 
 		public int Turn
 		{

@@ -51,32 +51,16 @@ namespace WFS
 		{
 			timePassed += delta;
 
+			if (!IsPerformingAction && controller.Defender == this && controller.CurrentState is NegateActionsState)
+			{
+				movementState = Action.Timeout;
+			}
+			
 			if (movementState == Action.Timeout && IsInputAllowed())
 			{
 				string animationStr = InputCheck(second);
-
-//				if (animationStr != "Idle")
-//				{
-//					if (defend == true)
-//					{
-//						animationStr += "Defend";
-//					}
-//					else
-//					{
-//						animationStr += "Attack";
-//					}
-//				}
-				//Animate(movementState);
-
-				//SetAnimation(animationStr);
 			}
 			AnimateFrame();
-
-//			if (!IsInputAllowed())
-//			{
-//				movementState = Action.Timeout;
-//				SetAnimation("Idle");
-//			}
 		}
 
 		public void Animate(Action action)

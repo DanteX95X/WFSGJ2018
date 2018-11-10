@@ -21,7 +21,7 @@ namespace WFS
 			this.actionsCount = actionsCount;
 			timePassed = 0;
 
-			this.timer = (float)controller.Config.GetValue("Config", "AttackTime");
+			this.timer = (float)Global.config.GetValue("Config", "AttackTime");
 		}
 		
 		public override State Update(float delta)

@@ -1,66 +1,63 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/PlayerPawn.cs" type="Script" id=1]
-[ext_resource path="res://Textures/StarEffect.png" type="Texture" id=2]
-[ext_resource path="res://Textures/Idle.png" type="Texture" id=3]
-[ext_resource path="res://Textures/Idle1.png" type="Texture" id=4]
-[ext_resource path="res://Textures/Idle2.png" type="Texture" id=5]
-[ext_resource path="res://Textures/Idle3.png" type="Texture" id=6]
-[ext_resource path="res://Textures/DownAttack.png" type="Texture" id=7]
-[ext_resource path="res://Textures/DownDefend.png" type="Texture" id=8]
-[ext_resource path="res://Textures/LeftDefend.png" type="Texture" id=9]
-[ext_resource path="res://Textures/LeftAttack.png" type="Texture" id=10]
-[ext_resource path="res://Textures/UpAttack.png" type="Texture" id=11]
-[ext_resource path="res://Textures/RightDefend.png" type="Texture" id=12]
-[ext_resource path="res://Textures/RightAttack.png" type="Texture" id=13]
-[ext_resource path="res://Textures/UpDefend.png" type="Texture" id=14]
+[ext_resource path="res://Scripts/UI/HealthBar.cs" type="Script" id=2]
+[ext_resource path="res://Textures/DownAttack.png" type="Texture" id=3]
+[ext_resource path="res://Textures/UpAttack.png" type="Texture" id=4]
+[ext_resource path="res://Textures/LeftAttack.png" type="Texture" id=5]
+[ext_resource path="res://Textures/DownDefend.png" type="Texture" id=6]
+[ext_resource path="res://Textures/RightAttack.png" type="Texture" id=7]
+[ext_resource path="res://Textures/LeftDefend.png" type="Texture" id=8]
+[ext_resource path="res://Textures/RightDefend.png" type="Texture" id=9]
+[ext_resource path="res://Textures/UpDefend.png" type="Texture" id=10]
+[ext_resource path="res://Textures/Idle.png" type="Texture" id=11]
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 7 ) ],
+"frames": [ ExtResource( 3 ) ],
 "loop": true,
 "name": "DownAttack",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 8 ) ],
-"loop": true,
-"name": "DownDefend",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 9 ) ],
-"loop": true,
-"name": "LeftDefend",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 10 ) ],
-"loop": true,
-"name": "LeftAttack",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 11 ) ],
+"frames": [ ExtResource( 4 ) ],
 "loop": true,
 "name": "UpAttack",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 12 ) ],
+"frames": [ ExtResource( 5 ) ],
 "loop": true,
-"name": "RightDefend",
+"name": "LeftAttack",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 13 ) ],
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "DownDefend",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
 "loop": true,
 "name": "RightAttack",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 14 ) ],
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "LeftDefend",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "RightDefend",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ) ],
 "loop": true,
 "name": "UpDefend",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": true,
+"name": "Idle",
 "speed": 5.0
 } ]
 
@@ -81,10 +78,31 @@ __meta__ = {
 defend = false
 second = false
 
-[node name="Effect" type="Sprite" parent="." index="0"]
+[node name="HealthBar" type="ProgressBar" parent="." index="0"]
 
-visible = false
-texture = ExtResource( 2 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -120.0
+margin_top = -230.0
+margin_right = 116.0
+margin_bottom = -191.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 0.0
+exp_edit = false
+rounded = false
+percent_visible = true
+script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="1"]
 

@@ -11,7 +11,6 @@ namespace WFS
 		private IActionProvider defender;
 		private int iterator;
 		
-		//temp hack
 		private float timer;
 		private float timePassed;
 		
@@ -23,7 +22,7 @@ namespace WFS
 			timePassed = 0;
 			iterator = 0;
 
-			this.timer = (float)controller.Config.GetValue("Config", "DefendTime");
+			this.timer = (float)Global.config.GetValue("Config", "DefendTime");
 		}
 		
 		public override State Update(float delta)

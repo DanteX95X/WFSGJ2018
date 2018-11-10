@@ -14,6 +14,9 @@ namespace WFS
 		
 		private float timer;
 		private float timePassed;
+
+		private AudioStreamPlayer gruntSound;
+		private AudioStreamPlayer evadeSound;
 		
 		public NegateActionsState(BaseController controller, List<Action> recordedActions)
 		{
@@ -25,6 +28,9 @@ namespace WFS
 			iterator = 0;
 
 			this.timer = (float)Global.config.GetValue("Config", "DefendTime");
+
+			gruntSound = (AudioStreamPlayer)this.controller.GetNode("Sounds").GetNode("GruntSound");
+			evadeSound = (AudioStreamPlayer)this.controller.GetNode("Sounds").GetNode("EvadeSound");
 		}
 		
 		public override State Update(float delta)
@@ -52,11 +58,13 @@ namespace WFS
 				if (negativeAction == recordedActions[iterator])
 				{
 					GD.Print("OK");
+					evadeSound.Play();
 				}
 				else
 				{
 					GD.Print("Wrong action! " + negativeAction.ToString());
 					--defender.Health;
+					gruntSound.Play();
 					GD.Print("HP " + defender.Health);
 					if (defender.Health <= 0)
 					{
@@ -77,6 +85,7 @@ namespace WFS
 					timePassed = 0;
 					GD.Print("Timeout!");
 					--defender.Health;
+					gruntSound.Play();
 					GD.Print("HP " + defender.Health);
 					if (defender.Health <= 0)
 					{

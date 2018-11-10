@@ -95,5 +95,12 @@ namespace WFS
         }
 
         public bool IsPerformingAction => false;
+
+        public int Health
+        {
+            get { throw new NotImplementedException();}
+            set { throw new NotImplementedException();}
+            
+        }
     }
 }

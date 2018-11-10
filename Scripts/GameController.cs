@@ -14,6 +14,12 @@ namespace WFS
 		{
 			return Action.NegativeFirst;
 		}
+
+		public int Health
+		{
+			get { return 1; }
+			set { }
+		}
 	}
 	
 	public class GameController : Node

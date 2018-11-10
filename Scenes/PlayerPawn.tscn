@@ -60,9 +60,9 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Area2D" type="Area2D" index="0"]
+[node name="PlayerPawn" type="Area2D"]
 
-position = Vector2( 299.38, 260.419 )
+position = Vector2( 303.481, 258.368 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -75,6 +75,7 @@ __meta__ = {
 "_edit_group_": true
 }
 defend = false
+second = false
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
 

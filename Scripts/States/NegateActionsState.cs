@@ -22,28 +22,28 @@ namespace WFS
 		}
 		
 		public override State Update(float delta)
-		{
-			timePassed += delta;
+		{	
+			Action negativeAction = (Action)(-(int)defender.ProvideAction());
+			if (negativeAction != Action.Timeout && negativeAction == recordedActions[iterator])
+			{
+				GD.Print("OK");
+			}
+			else
+			{
+				GD.Print("Raptot zjebałeś!");
+			}
 
+			++iterator;
+			if (iterator >= recordedActions.Count)
+			{
+				return null;
+			}
+			
+			timePassed += delta;
 			if (timePassed >= timer)
 			{
 				timePassed = 0;
-				
-				Action negativeAction = (Action)(-(int)defender.ProvideAction());
-				if (negativeAction != Action.Timeout && negativeAction == recordedActions[iterator])
-				{
-					GD.Print("OK");
-				}
-				else
-				{
-					GD.Print("Raptot zjebałeś!");
-				}
-
-				++iterator;
-				if (iterator >= recordedActions.Count)
-				{
-					return null;
-				}
+				GD.Print("Raptot zjebałeś!");
 			}
 
 			return this;

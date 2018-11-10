@@ -1,45 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://NegativeShaderMaterial.material" type="Material" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
 
-[sub_resource type="Shader" id=1]
-
-code = "shader_type canvas_item;
-render_mode unshaded;
-
-uniform float raptot1 : hint_range(0, 1);
-
-void fragment()
-{	
-	float raptot = 0.5 + raptot1 * 0.5;
-	float zjebales = raptot - 0.5;
-	if(UV.x < raptot && UV.x > zjebales)
-	{
-		vec4 tex = texture(TEXTURE, UV);
-		COLOR = vec4(1.0 - tex.r, 1.0 - tex.g, 1.0 - tex.b, 1.0);
-	}
-	else
-	{
-		COLOR = texture(TEXTURE, UV);
-	}
-}"
-_sections_unfolded = [ "Resource" ]
-
-[sub_resource type="ShaderMaterial" id=2]
-
-render_priority = 0
-shader = SubResource( 1 )
-shader_param/raptot1 = 0.0
-_sections_unfolded = [ "shader_param" ]
-
-[node name="Node2D" type="Node2D" index="0"]
+[node name="Node2D" type="Node2D"]
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
-material = SubResource( 2 )
-position = Vector2( 257.687, -149.24 )
+material = ExtResource( 1 )
+position = Vector2( 242.581, 339.162 )
 scale = Vector2( 6.77119, 4.12488 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 _sections_unfolded = [ "Material", "Visibility" ]
 
 

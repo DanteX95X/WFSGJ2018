@@ -5,6 +5,8 @@ public class PlayerPawn : Area2D
 {
     [Export]
     public bool defend;
+    [Export]
+    public bool second;
 
     public override void _Ready()
     {
@@ -19,28 +21,7 @@ public class PlayerPawn : Area2D
 
         animatedSprite.Play();
 
-        string animationStr = "";
-
-        if (Input.IsActionPressed("ui_up"))
-        {
-            animationStr = "Up";
-        }
-        else if (Input.IsActionPressed("ui_right"))
-        {
-            animationStr = "Right";
-        }
-        else if (Input.IsActionPressed("ui_left"))
-        {
-            animationStr = "Left";
-        }
-        else if (Input.IsActionPressed("ui_down"))
-        {
-            animationStr = "Down";
-        }
-        else
-        {
-            animationStr = "Idle";
-        }
+        string animationStr = InputCheck(second);
 
         if (animationStr != "Idle")
         {
@@ -55,6 +36,33 @@ public class PlayerPawn : Area2D
         }
 
         animatedSprite.Animation = animationStr;
+    }
 
+    private string InputCheck(bool second){
+        
+        string animationStr = "";
+
+        if (Input.IsActionPressed(second ? "ui_up_second" : "ui_up"))
+        {
+            animationStr = "Up";
+        }
+        else if (Input.IsActionPressed(second ? "ui_right_second" : "ui_right"))
+        {
+            animationStr = "Right";
+        }
+        else if (Input.IsActionPressed(second ? "ui_left_second" : "ui_left"))
+        {
+            animationStr = "Left";
+        }
+        else if (Input.IsActionPressed(second ? "ui_down_second" : "ui_down"))
+        {
+            animationStr = "Down";
+        }
+        else
+        {
+            animationStr = "Idle";
+        }
+
+        return animationStr;
     }
 }

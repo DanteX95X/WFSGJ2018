@@ -19,6 +19,8 @@ namespace WFS
 	public class GameController : Node
 	{
 		private State state;
+		private ConfigFile config;
+		public ConfigFile Config => config;
 
 		//TODO: make it sensible
 		public IActionProvider Attacker => new MockPlayer();
@@ -27,7 +29,11 @@ namespace WFS
 		public override void _Ready()
 		{
 			GD.Print("Controller started");
-			
+
+			config = new ConfigFile();
+			config.Load("res://GameConfig.cfg");
+			// config.GetValue("Config", "AttackTime");
+
 			state = new PreRecordState(this, 4);
 		}
 		

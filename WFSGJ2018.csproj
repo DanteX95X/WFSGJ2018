@@ -53,12 +53,14 @@
     <Compile Include="Scripts\PlayerPawn.cs" />
     <Compile Include="Scripts\Enums\Action.cs" />
     <Compile Include="Scripts\GameController.cs" />
+    <Compile Include="Scripts\Global.cs" />
     <Compile Include="Scripts\Interfaces\IActionProvider.cs" />
     <Compile Include="Scripts\States\NegateActionsState.cs" />
     <Compile Include="Scripts\States\PreNegateState.cs" />
     <Compile Include="Scripts\States\PreRecordState.cs" />
     <Compile Include="Scripts\States\RecordActionsState.cs" />
     <Compile Include="Scripts\States\State.cs" />
+    <Compile Include="Scripts\UI\HealthBar.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

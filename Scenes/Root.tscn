@@ -3,7 +3,7 @@
 [ext_resource path="res://Scripts/GameController.cs" type="Script" id=1]
 [ext_resource path="res://Scenes/PlayerPawn.tscn" type="PackedScene" id=2]
 
-[node name="Root" type="Node" index="0"]
+[node name="Root" type="Node"]
 
 [node name="GameController" type="Node" parent="." index="0"]
 
@@ -16,6 +16,7 @@ editor/display_folded = true
 [node name="Player2" parent="GameController" index="1" instance=ExtResource( 2 )]
 
 position = Vector2( 736.025, 263.359 )
+second = true
 
 
 [editable path="GameController/Player1"]

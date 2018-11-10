@@ -17,7 +17,7 @@ namespace WFS
 		public override void _Process(float delta)
 		{
 			// GD.Print("Player health: ", Player.Health / MaxHealthValue);
-			this.SetValue(Player.Health / MaxHealthValue * 100);	
+			this.SetValue((float)Player.Health / MaxHealthValue * 100);	
 		}
 	}
 }

@@ -13,6 +13,7 @@ namespace WFS
 
 		private Action movementState;
 		private AnimatedSprite animatedSprite;
+        private Particles2D starEffect;
 		private int healthCurrent;
 		private int healthMax;
 
@@ -38,6 +39,7 @@ namespace WFS
 
 			movementState = Action.Timeout;
 			animatedSprite = (AnimatedSprite)GetNode("AnimatedSprite");
+            starEffect = (Particles2D)GetNode("StarEffect");
 
 			animatedSprite.FlipH = false;
 			animatedSprite.FlipV = false;
@@ -57,6 +59,7 @@ namespace WFS
 				{
 					if (defend == true)
 					{
+                        //starEffect.SetEmitting(true);
 						animationStr += "Defend";
 					}
 					else
@@ -65,13 +68,14 @@ namespace WFS
 					}
 				}
 
+                
 				SetAnimation(animationStr);
 			}
 
 			if (!IsInputAllowed())
 			{
 				movementState = Action.Timeout;
-				SetAnimation("Idle");
+				SetAnimation("Idle");;
 			}
 		}
 

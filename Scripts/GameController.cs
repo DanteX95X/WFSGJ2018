@@ -5,6 +5,11 @@ namespace WFS
 {
 	internal class MockPlayer : IActionProvider
 	{
+		public bool IsPerformingAction
+		{
+			get { return false; }
+		}
+		
 		public Action ProvideAction()
 		{
 			return Action.NegativeFirst;
@@ -15,17 +20,20 @@ namespace WFS
 	{
 		private State state;
 		private ConfigFile config;
+
+		//TODO: make it sensible
+		public IActionProvider Attacker => new MockPlayer();
+		public IActionProvider Defender => new MockPlayer();
 		
 		public override void _Ready()
 		{
 			GD.Print("Controller started");
-			
-			state = new RecordActionsState(new MockPlayer(), 4);
 
 			config = new ConfigFile();
 			config.Load("res://GameConfig.cfg");
-
 			// config.GetValue("Config", "AttackTime");
+
+			state = new RecordActionsState(this, 4);
 		}
 		
 		public override void _Process(float delta)

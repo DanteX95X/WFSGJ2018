@@ -6,7 +6,7 @@ namespace WFS
 	public class RecordActionsState : State
 	{
 		private int actionsCount;
-		private GameController controller;
+		private BaseController controller;
 		private IActionProvider attacker;
 		private List<Action> actions = new List<Action>();
 		
@@ -14,7 +14,7 @@ namespace WFS
 		private float timer = 0;
 		private float timePassed;
 		
-		public RecordActionsState(GameController controller, int actionsCount)
+		public RecordActionsState(BaseController controller, int actionsCount)
 		{
 			this.controller = controller;
 			this.attacker = controller.Attacker;

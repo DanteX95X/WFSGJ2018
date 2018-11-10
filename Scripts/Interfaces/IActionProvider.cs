@@ -8,6 +8,7 @@ namespace WFS
 		bool IsPerformingAction { get; }
 		int Health { get; set; }
 		void Reset();
-		GameController controller { set; }
+		BaseController controller { set; }
+		void Animate(Action action);
 	}
 }

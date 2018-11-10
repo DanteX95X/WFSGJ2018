@@ -3,18 +3,9 @@ using System.Collections.Generic;
 
 namespace WFS
 {
-    public class GameController : Node
+    public class GameController : BaseController
     {
-        private State state;
-
-        List<IActionProvider> players = new List<IActionProvider>();
-        private int turn;
-
-        private Label fightLabel;
-        float fightLabelTimer;
-        float fightLabelTimeMax;
-
-        public IActionProvider Attacker
+        public override IActionProvider Attacker
         {
             get
             {
@@ -23,24 +14,13 @@ namespace WFS
             }
         }
 
-        public IActionProvider Defender
+        public override IActionProvider Defender
         {
             get
             {
                 int index = turn % 2;
                 return players[index];
             }
-        }
-
-        public int Turn
-        {
-            get { return turn; }
-            set { turn = value; }
-        }
-
-        public State CurrentState
-        {
-            get { return state; }
         }
 
         public override void _Ready()
@@ -50,13 +30,7 @@ namespace WFS
             players.Add((IActionProvider)GetNode("Player1"));
             players.Add((IActionProvider)GetNode("Player2"));
 
-            //Timers TODO: Read Max from config
-            fightLabelTimeMax = 1;
-
-            //UI
             fightLabel = (Label)GetNode("FightLabel");
-
-            ResetFightLabel();
 
             foreach (var player in players)
             {
@@ -68,21 +42,9 @@ namespace WFS
             state = new PreRecordState(this, turn);
         }
 
-        public void ResetFightLabel()
-        {
-            fightLabel.Show();
-            fightLabelTimer = 0;
-        }
-
         public override void _Process(float delta)
         {
-            //Process Timers
-            fightLabelTimer += delta;
-
-            if (fightLabelTimer > fightLabelTimeMax)
-            {
-                fightLabel.Hide();
-            }
+            ProcessFightLabel(delta);
 
             state = state?.Update(delta);
         }

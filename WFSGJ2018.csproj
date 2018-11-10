@@ -50,17 +50,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scripts\BaseController.cs" />
     <Compile Include="Scripts\PlayerPawn.cs" />
     <Compile Include="Scripts\Enums\Action.cs" />
     <Compile Include="Scripts\GameController.cs" />
     <Compile Include="Scripts\Global.cs" />
     <Compile Include="Scripts\Interfaces\IActionProvider.cs" />
+    <Compile Include="Scripts\SinglePlayerController.cs" />
     <Compile Include="Scripts\States\NegateActionsState.cs" />
     <Compile Include="Scripts\States\PreNegateState.cs" />
     <Compile Include="Scripts\States\PreRecordState.cs" />
     <Compile Include="Scripts\States\RecordActionsState.cs" />
+    <Compile Include="Scripts\States\SP_RecordActionsState.cs" />
     <Compile Include="Scripts\States\State.cs" />
     <Compile Include="Scripts\UI\HealthBar.cs" />
+    <Compile Include="Scripts\UI\MainMenuButton.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

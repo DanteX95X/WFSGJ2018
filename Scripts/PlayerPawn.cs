@@ -7,8 +7,6 @@ namespace WFS
 	public class PlayerPawn : Area2D, IActionProvider
 	{
 		[Export]
-		public bool defend;
-		[Export]
 		public bool second;
 
 		private Action movementState;
@@ -20,8 +18,10 @@ namespace WFS
 		private float timer = 1;
 		private float timePassed = 0;
 
+		private bool isAnimating = false;
+
 		
-		public GameController controller { get; set; }
+		public BaseController controller { get; set; }
 		
 		private Dictionary<Action, string> actionToAnimation;
 		public override void _Ready()
@@ -51,33 +51,50 @@ namespace WFS
 		{
 			timePassed += delta;
 
-			if (movementState == Action.Timeout)
+			if (!IsPerformingAction && controller.Defender == this && controller.CurrentState is NegateActionsState)
+			{
+				movementState = Action.Timeout;
+			}
+			
+			if (movementState == Action.Timeout && IsInputAllowed())
 			{
 				string animationStr = InputCheck(second);
+			}
+			AnimateFrame();
+		}
 
-				if (animationStr != "Idle")
+		public void Animate(Action action)
+		{
+			movementState = action;
+			isAnimating = true;
+		}
+		
+		public void AnimateFrame()
+		{
+			if (IsPerformingAction)
+			{
+				string animation = actionToAnimation[movementState];
+				if (animation != "Idle")
 				{
-					if (defend == true)
+					if (controller.Defender == this)
 					{
-                        //starEffect.SetEmitting(true);
-						animationStr += "Defend";
+						animation += "Defend";
 					}
 					else
 					{
-						animationStr += "Attack";
+						animation += "Attack";
 					}
 				}
-                
-				SetAnimation(animationStr);
+				SetAnimation(animation);
 			}
-
-			if (!IsInputAllowed())
+			else
 			{
-				movementState = Action.Timeout;
-				SetAnimation("Idle");;
+				isAnimating = false;
+				SetAnimation("Idle");
+				timePassed = 0;
 			}
 		}
-
+		
 		private string InputCheck(bool second)
 		{
 			if (Input.IsActionJustReleased(second ? "ui_up_second" : "ui_up"))
@@ -107,19 +124,20 @@ namespace WFS
 
 		public void Reset()
 		{
+			movementState = Action.Timeout;
+			isAnimating = false;
 			timePassed = 0;
 		}
 
 		Action IActionProvider.ProvideAction()
 		{
 			Action temp = movementState;
-			movementState = Action.Timeout;
 			return temp;
 		}
 
 		public bool IsPerformingAction
 		{
-			get { return timePassed <= timer; }
+			get { return isAnimating && timePassed <= timer; }
 		}
 
 		public int Health

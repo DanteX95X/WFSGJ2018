@@ -1,5 +1,8 @@
 
-public interface IActionProvider
+namespace WFS
 {
-	Action ProvideAction();
+	public interface IActionProvider
+	{
+		Action ProvideAction();
+	}
 }

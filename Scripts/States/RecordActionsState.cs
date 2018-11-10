@@ -6,17 +6,16 @@ namespace WFS
 	public class RecordActionsState : State
 	{
 		private int actionsCount;
-		private IActionProvider actionProvider;
+		private IActionProvider attacker;
 		private List<Action> actions = new List<Action>();
 		
 		//temp hack
 		private float timer = 2.0f;
 		private float timePassed;
 		
-		public RecordActionsState(IActionProvider actionProvider, int actionsCount, ref List<Action> actions)
+		public RecordActionsState(IActionProvider attacker, int actionsCount)
 		{
-			this.actions = actions;
-			this.actionProvider = actionProvider;
+			this.attacker = attacker;
 			this.actionsCount = actionsCount;
 			timePassed = 0;
 		}
@@ -27,15 +26,16 @@ namespace WFS
 			if (timePassed >= timer)
 			{
 				timePassed = 0;
-				if (actionsCount <= 0)
-				{
-					return null;
-				}
 
-				Action currentAction = actionProvider.ProvideAction();
+				Action currentAction = attacker.ProvideAction();
 				GD.Print("New action " + currentAction.ToString());
 				--actionsCount;
 				actions.Add(currentAction);
+				
+				if (actionsCount <= 0)
+				{
+					return new NegateActionsState(actions, attacker);
+				}
 			}
 			return this;
 		}

@@ -7,26 +7,25 @@ namespace WFS
 	{
 		public Action ProvideAction()
 		{
-			return Action.Timeout;
+			return Action.NegativeFirst;
 		}
 	}
 	
 	public class GameController : Node
 	{
 		private State state;
-		private List<Action> actions = new List<Action>();
 		
 		
 		public override void _Ready()
 		{
 			GD.Print("Controller started");
 			
-			state = new RecordActionsState(new MockPlayer(), 4, ref actions);
+			state = new RecordActionsState(new MockPlayer(), 4);
 		}
 		
 		public override void _Process(float delta)
 		{
-			state?.Update(delta);
+			state = state?.Update(delta);
 		}
 	}
 }

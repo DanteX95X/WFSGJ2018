@@ -63,7 +63,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="PlayerPawn" type="Area2D" index="0"]
+[node name="PlayerPawn" type="Area2D"]
 
 material = ExtResource( 1 )
 position = Vector2( 303.481, 258.368 )
@@ -79,7 +79,6 @@ _sections_unfolded = [ "Material" ]
 __meta__ = {
 "_edit_group_": true
 }
-defend = false
 second = false
 
 [node name="HealthBar" type="ProgressBar" parent="." index="0"]

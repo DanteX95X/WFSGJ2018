@@ -12,6 +12,27 @@ namespace WFS
 		public abstract IActionProvider Attacker { get; }
 		public abstract IActionProvider Defender { get; }
 		
+		public Label fightLabel;
+		public float fightLabelTimer;
+		public float fightLabelTimeMax;
+		
+		public void ResetFightLabel()
+		{
+			fightLabel.Show();
+			fightLabelTimer = 0;
+		}
+		
+		public void ProcessFightLabel(float delta)
+		{
+			//Process Timers
+			fightLabelTimer += delta;
+
+			if (fightLabelTimer > fightLabelTimeMax)
+			{
+				fightLabel.Hide();
+			}
+		}
+		
 		public int Turn
 		{
 			get { return turn; }

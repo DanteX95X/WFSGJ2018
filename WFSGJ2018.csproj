@@ -67,6 +67,7 @@
     <Compile Include="Scripts\States\SP_RecordActionsState.cs" />
     <Compile Include="Scripts\States\State.cs" />
     <Compile Include="Scripts\UI\HealthBar.cs" />
+    <Compile Include="Scripts\UI\MainMenuButton.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

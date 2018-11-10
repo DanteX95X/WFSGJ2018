@@ -18,6 +18,8 @@ namespace WFS
 		private AudioStreamPlayer gruntSound;
 		private AudioStreamPlayer evadeSound;
 		private AudioStreamPlayer koSound;
+
+		private Timer timerNode;
 		
 		public NegateActionsState(BaseController controller, List<Action> recordedActions)
 		{
@@ -33,6 +35,8 @@ namespace WFS
 			gruntSound = (AudioStreamPlayer)this.controller.GetNode("Sounds").GetNode("GruntSound");
 			evadeSound = (AudioStreamPlayer)this.controller.GetNode("Sounds").GetNode("EvadeSound");
 			koSound = (AudioStreamPlayer)this.controller.GetNode("Sounds").GetNode("KOSound");
+
+			timerNode = (Timer) this.controller.GetNode("Timer");
 		}
 		
 		public override State Update(float delta)
@@ -72,8 +76,9 @@ namespace WFS
 					{
 						koSound.Play();
 						GD.Print("Game over");
-						Global global = (Global)controller.GetNode("/root/Global");
-						global.GotoScene("res://Scenes/MainMenu.tscn");
+						timerNode.Connect("timeout", controller, nameof(controller.TransferToMenu));
+						timerNode.SetWaitTime(2);
+						timerNode.Start();
 						return null;
 					}
 				}
@@ -95,8 +100,9 @@ namespace WFS
 					{
 						koSound.Play();
 						GD.Print("Game over");
-						Global global = (Global)controller.GetNode("/root/Global");
-						global.GotoScene("res://Scenes/MainMenu.tscn");
+						timerNode.Connect("timeout", controller, nameof(controller.TransferToMenu));
+						timerNode.SetWaitTime(2);
+						timerNode.Start();
 						return null;
 					}
 					

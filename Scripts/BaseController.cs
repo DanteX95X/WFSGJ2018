@@ -47,8 +47,6 @@ namespace WFS
 			{
 				defendLabel.Hide();
 			}
-
-
 		}
 		
 		public int Turn
@@ -66,6 +64,12 @@ namespace WFS
 		public override void _Process(float delta)
 		{
 			state = state?.Update(delta);
+		}
+		
+		public void TransferToMenu()
+		{
+			Global global = (Global)GetNode("/root/Global");
+			global.GotoScene("res://Scenes/MainMenu.tscn");
 		}
 		
 	}

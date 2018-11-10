@@ -120,5 +120,12 @@ autoplay = true
 mix_target = 0
 bus = "Master"
 
+[node name="Timer" type="Timer" parent="GameController" index="5"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
 
 [editable path="GameController/Player1"]

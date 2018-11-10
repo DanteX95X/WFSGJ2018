@@ -40,7 +40,7 @@ namespace WFS
 				return new PreRecordState(controller, ++controller.Turn);
 			}
 			
-			if (defender.IsPerformingAction)
+			if (defender.IsPerformingAction || attacker.IsPerformingAction)
 				return this;
 			
 			if (iterator >= recordedActions.Count)
@@ -74,8 +74,6 @@ namespace WFS
 				}
 
 				++iterator;
-				return this;
-
 			}
 			else
 			{
@@ -84,6 +82,7 @@ namespace WFS
 				{
 					timePassed = 0;
 					GD.Print("Timeout!");
+					attacker.Animate(recordedActions[iterator]);
 					--defender.Health;
 					gruntSound.Play();
 					GD.Print("HP " + defender.Health);
@@ -94,10 +93,6 @@ namespace WFS
 					}
 					
 					++iterator;
-					if (iterator >= recordedActions.Count)
-					{
-						return new PreRecordState(controller, ++controller.Turn);
-					}
 				}
 			}
 

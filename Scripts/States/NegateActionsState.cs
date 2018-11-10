@@ -14,6 +14,12 @@ namespace WFS
 		
 		private float timer;
 		private float timePassed;
+
+		private AudioStreamPlayer gruntSound;
+		private AudioStreamPlayer evadeSound;
+		private AudioStreamPlayer koSound;
+
+		private Timer timerNode;
 		
 		public NegateActionsState(BaseController controller, List<Action> recordedActions)
 		{
@@ -25,6 +31,12 @@ namespace WFS
 			iterator = 0;
 
 			this.timer = (float)Global.config.GetValue("Config", "DefendTime");
+
+			gruntSound = (AudioStreamPlayer)this.controller.GetNode("Sounds").GetNode("GruntSound");
+			evadeSound = (AudioStreamPlayer)this.controller.GetNode("Sounds").GetNode("EvadeSound");
+			koSound = (AudioStreamPlayer)this.controller.GetNode("Sounds").GetNode("KOSound");
+
+			timerNode = (Timer) this.controller.GetNode("Timer");
 		}
 		
 		public override State Update(float delta)
@@ -34,7 +46,7 @@ namespace WFS
 				return new PreRecordState(controller, ++controller.Turn);
 			}
 			
-			if (defender.IsPerformingAction)
+			if (defender.IsPerformingAction || attacker.IsPerformingAction)
 				return this;
 			
 			if (iterator >= recordedActions.Count)
@@ -52,22 +64,26 @@ namespace WFS
 				if (negativeAction == recordedActions[iterator])
 				{
 					GD.Print("OK");
+					evadeSound.Play();
 				}
 				else
 				{
 					GD.Print("Wrong action! " + negativeAction.ToString());
 					--defender.Health;
+					gruntSound.Play();
 					GD.Print("HP " + defender.Health);
 					if (defender.Health <= 0)
 					{
+						koSound.Play();
 						GD.Print("Game over");
+						timerNode.Connect("timeout", controller, nameof(controller.TransferToMenu));
+						timerNode.SetWaitTime(2);
+						timerNode.Start();
 						return null;
 					}
 				}
 
 				++iterator;
-				return this;
-
 			}
 			else
 			{
@@ -76,19 +92,21 @@ namespace WFS
 				{
 					timePassed = 0;
 					GD.Print("Timeout!");
+					attacker.Animate(recordedActions[iterator]);
 					--defender.Health;
+					gruntSound.Play();
 					GD.Print("HP " + defender.Health);
 					if (defender.Health <= 0)
 					{
+						koSound.Play();
 						GD.Print("Game over");
+						timerNode.Connect("timeout", controller, nameof(controller.TransferToMenu));
+						timerNode.SetWaitTime(2);
+						timerNode.Start();
 						return null;
 					}
 					
 					++iterator;
-					if (iterator >= recordedActions.Count)
-					{
-						return new PreRecordState(controller, ++controller.Turn);
-					}
 				}
 			}
 

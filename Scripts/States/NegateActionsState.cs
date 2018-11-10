@@ -21,6 +21,8 @@ namespace WFS
 			this.recordedActions = recordedActions;
 			timePassed = 0;
 			iterator = 0;
+
+			this.timer = (float)controller.Config.GetValue("Config", "DefendTime");
 		}
 		
 		public override State Update(float delta)

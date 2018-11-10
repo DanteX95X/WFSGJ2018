@@ -20,6 +20,7 @@ namespace WFS
 	{
 		private State state;
 		private ConfigFile config;
+		public ConfigFile Config => config;
 
 		//TODO: make it sensible
 		public IActionProvider Attacker => new MockPlayer();

@@ -20,6 +20,8 @@ namespace WFS
 			this.attacker = controller.Attacker;
 			this.actionsCount = actionsCount;
 			timePassed = 0;
+
+			this.timer = (float)controller.Config.GetValue("Config", "AttackTime");
 		}
 		
 		public override State Update(float delta)

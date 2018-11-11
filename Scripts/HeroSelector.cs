@@ -23,11 +23,11 @@ namespace WFS
             WFS.Global global = (WFS.Global)GetNode("/root/Global");
             singlePlayerMode = global.singlePlayer;
 
-            // if (singlePlayerMode)
-            // {
-            //     playerTwoLock = false;
-            //     characterChoices[playerTwoIndex].Unchosen(PlayerChoice.Two);
-            // }
+//             if (singlePlayerMode)
+//             {
+//                 playerTwoLock = false;
+//                 characterChoices[playerTwoIndex].Unchosen(PlayerChoice.Two);
+//             }
             foreach (var node in GetChildren())
             {
                 if (node != null)

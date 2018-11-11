@@ -36,7 +36,7 @@ use_filter = false
 font_data = SubResource( 3 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Root" type="Node" index="0"]
+[node name="Root" type="Node"]
 
 [node name="GameController" type="Node" parent="." index="0"]
 

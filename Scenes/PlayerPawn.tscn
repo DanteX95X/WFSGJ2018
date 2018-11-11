@@ -123,7 +123,7 @@ animations = [ {
 } ]
 _sections_unfolded = [ "Resource" ]
 
-[node name="PlayerPawn" type="Area2D"]
+[node name="PlayerPawn" type="Area2D" index="0"]
 
 material = ExtResource( 1 )
 position = Vector2( 310.481, 263.368 )

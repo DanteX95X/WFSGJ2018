@@ -506,11 +506,12 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0.128906, 0, 0.0241699, 1 )
 text = "Fight!"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Material", "Rect", "Visibility", "custom_fonts" ]
+_sections_unfolded = [ "Material", "Rect", "Visibility", "custom_colors", "custom_fonts" ]
 
 [node name="GetReadyLabel" type="Label" parent="Background/GameController" index="3"]
 
@@ -530,11 +531,12 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Get Ready!"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Material", "Rect", "Visibility", "custom_fonts" ]
+_sections_unfolded = [ "Material", "Rect", "Visibility", "custom_colors", "custom_fonts" ]
 
 [node name="DefendLabel" type="Label" parent="Background/GameController" index="4"]
 
@@ -554,11 +556,12 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Defend!"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Rect", "Visibility", "custom_fonts" ]
+_sections_unfolded = [ "Rect", "Visibility", "custom_colors", "custom_fonts" ]
 
 [node name="KOLabel" type="Label" parent="Background/GameController" index="5"]
 
@@ -578,11 +581,12 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "K.O.!"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Rect", "Visibility", "custom_fonts" ]
+_sections_unfolded = [ "Rect", "Visibility", "custom_colors", "custom_fonts" ]
 
 [node name="Sounds" type="Node" parent="Background/GameController" index="6"]
 

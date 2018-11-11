@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Godot;
 
 namespace WFS
 {
@@ -24,6 +25,11 @@ namespace WFS
 				Random random = new Random();
 				int index = random.Next(0, availableActions.Count);
 				movementState = availableActions[index];
+				
+				if (IsInputAllowed())//controller.CurrentState is RecordActionsState && controller.Attacker == this)
+				{
+					animationPlayer.Play("movement");
+				}
 			}
 		}
 

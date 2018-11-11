@@ -17,8 +17,6 @@ namespace WFS
 
 		private AudioStreamPlayer gruntSound;
 		private AudioStreamPlayer evadeSound;
-
-		private Timer timerNode;
 		
 		public NegateActionsState(BaseController controller, List<Action> recordedActions)
 		{
@@ -33,8 +31,6 @@ namespace WFS
 
 			gruntSound = (AudioStreamPlayer)this.controller.GetNode("Sounds").GetNode("GruntSound");
 			evadeSound = (AudioStreamPlayer)this.controller.GetNode("Sounds").GetNode("EvadeSound");
-
-			timerNode = (Timer) this.controller.GetNode("Timer");
 		}
 		
 		public override State Update(float delta)

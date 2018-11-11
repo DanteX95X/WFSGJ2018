@@ -13,6 +13,12 @@ namespace WFS
 		public override State Update(float delta)
 		{
 			State returnable = base.Update(delta);
+
+			if (controller.Defender.Health <= 0)
+			{
+				return new DeathState(controller, controller.Defender);
+			}
+			
 			if (returnable is PreRecordState)
 			{
 				return new SP_RecordActionsState(controller, controller.Turn);

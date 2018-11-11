@@ -12,7 +12,7 @@ namespace WFS
         protected Action movementState;
         private AnimatedSprite animatedSprite;
         private AnimatedSprite prompt;
-        private AnimationPlayer animationPlayer;
+        protected AnimationPlayer animationPlayer;
         private int healthCurrent;
         private int healthMax;
 
@@ -174,7 +174,7 @@ namespace WFS
             set { healthCurrent = value; }
         }
 
-        bool IsInputAllowed()
+        protected bool IsInputAllowed()
         {
             return (controller.Attacker == this && controller.CurrentState is RecordActionsState) || (controller.Defender == this && controller.CurrentState is NegateActionsState);
         }

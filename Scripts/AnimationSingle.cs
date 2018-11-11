@@ -19,7 +19,7 @@ public class AnimationSingle : AnimatedSprite
         if (timer >= timerMax)
         {
             WFS.Global global = (WFS.Global)GetNode("/root/Global");
-            global.singlePlayer = false;
+            global.singlePlayer = true;
             global.GotoScene("res://Scenes/HeroSelector.tscn");
         }
     }

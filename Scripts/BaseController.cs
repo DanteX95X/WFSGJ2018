@@ -18,18 +18,31 @@ namespace WFS
 		public Label defendLabel;
         public float defendLabelTimer;
         public float defendLabelTimeMax;
+		public Label getReadyLabel;
+		public float getReadyLabelTimer;
+		public float getReadyLabelTimeMax;
 
         public void ResetFightLabel()
         {
             fightLabel.Show();
 	        defendLabel.Hide();
+	        getReadyLabel.Hide();
             fightLabelTimer = 0;
         }
+
+		public void ResetGetReadyLabel()
+		{
+			getReadyLabel.Show();
+			fightLabel.Hide();
+			defendLabel.Hide();
+			getReadyLabelTimer = 0;
+		}
 
         public void ResetDefendLabel()
         {
             defendLabel.Show();
 	        fightLabel.Hide();
+	        getReadyLabel.Hide();
             defendLabelTimer = 0;
         }
 		
@@ -48,6 +61,13 @@ namespace WFS
 			if (defendLabelTimer > defendLabelTimeMax)
 			{
 				defendLabel.Hide();
+			}
+
+			getReadyLabelTimer += delta;
+
+			if (getReadyLabelTimer > getReadyLabelTimeMax)
+			{
+				getReadyLabel.Hide();
 			}
 		}
 		

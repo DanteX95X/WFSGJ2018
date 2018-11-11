@@ -16,8 +16,12 @@ namespace WFS
 
 		private ShaderMaterial material;
 
+		private BaseController controller;
+
 		public PreRecordState(BaseController controller, int attacksCount)
 		{
+			this.controller = controller;
+			
 			canChangeState = false;
 			
 			transitionTime = (float)Global.config.GetValue("Config", "TransitionTime");
@@ -29,9 +33,7 @@ namespace WFS
 			else
 				sign = -sign;
 
-            controller.ResetFightLabel();
-			AudioStreamPlayer stream = (AudioStreamPlayer)controller.GetNode("Sounds")?.GetNode("FightSound");
-			stream?.Play();
+            controller.ResetGetReadyLabel();
 
 			state = new RecordActionsState(controller, attacksCount);
 
@@ -63,7 +65,12 @@ namespace WFS
 			else
 			{
 				if (Input.IsActionJustReleased("ui_accept"))
+				{
+					controller.ResetFightLabel();
+					AudioStreamPlayer stream = (AudioStreamPlayer)controller.GetNode("Sounds")?.GetNode("FightSound");
+					stream?.Play();
 					return state;
+				}
 			}
 			
 			return this;

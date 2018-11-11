@@ -71,6 +71,7 @@ namespace WFS
 					GD.Print("Wrong action! " + negativeAction.ToString());
 					--defender.Health;
 					gruntSound.Play();
+					defender.Blood.SetEmitting(true);
 					GD.Print("HP " + defender.Health);
 					if (defender.Health <= 0)
 					{
@@ -95,6 +96,7 @@ namespace WFS
 					attacker.Animate(recordedActions[iterator]);
 					--defender.Health;
 					gruntSound.Play();
+					defender.Blood.SetEmitting(true);
 					GD.Print("HP " + defender.Health);
 					if (defender.Health <= 0)
 					{

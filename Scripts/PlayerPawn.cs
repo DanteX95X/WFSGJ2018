@@ -9,153 +9,151 @@ namespace WFS
         [Export]
         public bool second;
 
-        protected Action movementState;
-        private AnimatedSprite animatedSprite;
-        private Particles2D starEffect;
-        private int healthCurrent;
-        private int healthMax;
+		protected Action movementState;
+		private AnimatedSprite animatedSprite;
+		private AnimatedSprite prompt;
+		private AnimationPlayer animationPlayer;
+		private int healthCurrent;
+		private int healthMax;
 
-        private float timer = 1;
-        private float timePassed = 0;
+		private float timer = 2;
+		private float timePassed = 0;
 
         private bool isAnimating = false;
 
+		public Particles2D Blood { get; set; }		
+		
+		public BaseController controller { get; set; }
+		
+		private Dictionary<Action, string> actionToAnimation;
 
-        public BaseController controller { get; set; }
-
-        private Dictionary<Action, string> actionToAnimation;
         public override void _Ready()
         {
             healthMax = (int)Global.config.GetValue("Config", "InitHealth");
             healthCurrent = healthMax;
 
-            actionToAnimation = new Dictionary<Action, string>();
+			movementState = Action.Timeout;
+			animatedSprite = (AnimatedSprite)GetNode("AnimatedSprite");
+			animatedSprite.FlipH = false;
+			animatedSprite.FlipV = false;
+			animatedSprite.Play();
+			
+			prompt = (AnimatedSprite) GetNode("Prompt");
+			prompt.FlipH = false;
+			prompt.FlipV = false;
+			animatedSprite.Play();
 
-            actionToAnimation[Action.NegativeSecond] = "Left";
-            actionToAnimation[Action.NegativeFirst] = "Down";
-            actionToAnimation[Action.Timeout] = "Idle";
-            actionToAnimation[Action.PositiveFirst] = "Up";
-            actionToAnimation[Action.PositiveSecond] = "Right";
+			Blood = (Particles2D)GetNode("Blood");
 
-            movementState = Action.Timeout;
-            animatedSprite = (AnimatedSprite)GetNode("AnimatedSprite");
-            starEffect = (Particles2D)GetNode("StarEffect");
+			animationPlayer = (AnimationPlayer) GetNode("animation");
+		}
 
-            WFS.Global global = (WFS.Global)GetNode("/root/Global");
+		public override void _Process(float delta)
+		{
+			timePassed += delta;
 
-            string path = "res://SpriteFrames/" + 
-                (second ? global.SecondCharacterSpriteFrameSelection :
-                 global.FirstCharacterSpriteFrameSelection) + ".tres";
-            
-            var kek = (SpriteFrames)GD.Load(path);
-            animatedSprite.SetSpriteFrames(kek);
+			if (!IsPerformingAction && controller.Defender == this && controller.CurrentState is NegateActionsState)
+			{
+				movementState = Action.Timeout;
+			}
+			
+			if (movementState == Action.Timeout && IsInputAllowed())
+			{
+				InputCheck(second);
+			}
+			AnimateFrame();
+		}
 
-            animatedSprite.FlipH = false;
-            animatedSprite.FlipV = false;
+		public void Animate(Action action)
+		{
+			movementState = action;
+			isAnimating = true;
+		}
+		
+		public void AnimateFrame()
+		{
+			if (IsPerformingAction)
+			{
+				string animation = actionToAnimation[movementState];
+				if (animation != "Idle")
+				{
+					if (controller.Defender == this)
+					{
+						animation += "Defend";
+					}
+					else
+					{
+						animation += "Attack";
+					}
+				}
+				SetAnimation(animation);
+			}
+			else
+			{
+				isAnimating = false;
+				SetAnimation("Idle");
+				timePassed = 0;
+			}
+		}
+		
+		protected virtual void InputCheck(bool second)
+		{
+			if (Input.IsActionJustReleased(second ? "ui_up_second" : "ui_up"))
+			{
+				movementState = Action.PositiveFirst;
+			}
+			else if (Input.IsActionJustReleased(second ? "ui_right_second" : "ui_right"))
+			{
+				movementState = Action.PositiveSecond;
+			}
+			else if (Input.IsActionJustReleased(second ? "ui_left_second" : "ui_left"))
+			{
+				movementState = Action.NegativeSecond;
+			}
+			else if (Input.IsActionJustReleased(second ? "ui_down_second" : "ui_down"))
+			{
+				movementState = Action.NegativeFirst;
+			}
 
-            animatedSprite.Play();
-        }
+			if (controller.CurrentState is RecordActionsState && controller.Attacker == this)
+			{
+				animationPlayer.Play("movement");
+			}
+		}
 
-        public override void _Process(float delta)
-        {
-            timePassed += delta;
+		public void SetAnimation(string animationStr)
+		{
+			animatedSprite.Animation = animationStr;
+			prompt.Animation = animationStr;
+		}
 
-            if (!IsPerformingAction && controller.Defender == this && controller.CurrentState is NegateActionsState)
-            {
-                movementState = Action.Timeout;
-            }
+		public void Reset()
+		{
+			movementState = Action.Timeout;
+			isAnimating = false;
+			timePassed = 0;
+		}
 
-            if (movementState == Action.Timeout && IsInputAllowed())
-            {
-                InputCheck(second);
-            }
-            AnimateFrame();
-        }
+		Action IActionProvider.ProvideAction()
+		{
+			Action temp = movementState;
+			return temp;
+		}
 
-        public void Animate(Action action)
-        {
-            movementState = action;
-            isAnimating = true;
-        }
+		public bool IsPerformingAction
+		{
+			get { return isAnimating && timePassed <= timer; }
+		}
 
-        public void AnimateFrame()
-        {
-            if (IsPerformingAction)
-            {
-                string animation = actionToAnimation[movementState];
-                if (animation != "Idle")
-                {
-                    if (controller.Defender == this)
-                    {
-                        animation += "Defend";
-                    }
-                    else
-                    {
-                        animation += "Attack";
-                    }
-                }
-                SetAnimation(animation);
-            }
-            else
-            {
-                isAnimating = false;
-                SetAnimation("Idle");
-                timePassed = 0;
-            }
-        }
+		public int Health
+		{
+			get { return healthCurrent; }
+			set { healthCurrent = value; }
+		}
 
-        protected virtual void InputCheck(bool second)
-        {
-            if (Input.IsActionJustReleased(second ? "ui_up_second" : "ui_up"))
-            {
-                movementState = Action.PositiveFirst;
-            }
-            else if (Input.IsActionJustReleased(second ? "ui_right_second" : "ui_right"))
-            {
-                movementState = Action.PositiveSecond;
-            }
-            else if (Input.IsActionJustReleased(second ? "ui_left_second" : "ui_left"))
-            {
-                movementState = Action.NegativeSecond;
-            }
-            else if (Input.IsActionJustReleased(second ? "ui_down_second" : "ui_down"))
-            {
-                movementState = Action.NegativeFirst;
-            }
-        }
-
-        public void SetAnimation(string animationStr)
-        {
-            animatedSprite.Animation = animationStr;
-        }
-
-        public void Reset()
-        {
-            movementState = Action.Timeout;
-            isAnimating = false;
-            timePassed = 0;
-        }
-
-        Action IActionProvider.ProvideAction()
-        {
-            Action temp = movementState;
-            return temp;
-        }
-
-        public bool IsPerformingAction
-        {
-            get { return isAnimating && timePassed <= timer; }
-        }
-
-        public int Health
-        {
-            get { return healthCurrent; }
-            set { healthCurrent = value; }
-        }
-
-        bool IsInputAllowed()
-        {
-            return (controller.Attacker == this && controller.CurrentState is RecordActionsState) || (controller.Defender == this && controller.CurrentState is NegateActionsState);
-        }
-    }
+		bool IsInputAllowed()
+		{
+			return (controller.Attacker == this && controller.CurrentState is RecordActionsState) || (controller.Defender == this && controller.CurrentState is NegateActionsState);
+		}
+	}
 }

@@ -135,7 +135,7 @@ namespace WFS
                 movementState = Action.NegativeFirst;
             }
 
-            if (IsInputAllowed())//controller.CurrentState is RecordActionsState && controller.Attacker == this)
+            if (controller.CurrentState is RecordActionsState && controller.Attacker == this)
             {
                 animationPlayer.Play("movement");
             }

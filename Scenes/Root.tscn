@@ -268,7 +268,7 @@ use_filter = true
 font_data = SubResource( 11 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Root" type="Node" index="0"]
+[node name="Root" type="Node"]
 
 [node name="Background" type="TextureRect" parent="." index="0"]
 

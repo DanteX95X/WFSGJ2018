@@ -1,60 +1,61 @@
-[gd_resource type="SpriteFrames" load_steps=6 format=2]
+[gd_resource type="SpriteFrames" load_steps=7 format=2]
 
-[ext_resource path="res://Textures/Idle.png" type="Texture" id=1]
-[ext_resource path="res://Textures/DownAttack.png" type="Texture" id=2]
-[ext_resource path="res://Textures/UpAttack.png" type="Texture" id=3]
-[ext_resource path="res://Textures/LeftAttack.png" type="Texture" id=4]
-[ext_resource path="res://Textures/RightAttack.png" type="Texture" id=5]
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Textures/Idle.png" type="Texture" id=2]
+[ext_resource path="res://Textures/DownAttack.png" type="Texture" id=3]
+[ext_resource path="res://Textures/UpAttack.png" type="Texture" id=4]
+[ext_resource path="res://Textures/LeftAttack.png" type="Texture" id=5]
+[ext_resource path="res://Textures/RightAttack.png" type="Texture" id=6]
 
 [resource]
 
 animations = [ {
-"frames": [ null ],
+"frames": [ ExtResource( 1 ) ],
 "loop": true,
 "name": "None",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 1 ) ],
+"frames": [ ExtResource( 2 ) ],
 "loop": true,
 "name": "Idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ) ],
+"frames": [ ExtResource( 3 ) ],
 "loop": true,
 "name": "DownAttack",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ) ],
+"frames": [ ExtResource( 4 ) ],
 "loop": true,
 "name": "UpAttack",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ) ],
+"frames": [ ExtResource( 3 ) ],
 "loop": true,
 "name": "DownDefend",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ) ],
+"frames": [ ExtResource( 5 ) ],
 "loop": true,
 "name": "LeftDefend",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ) ],
+"frames": [ ExtResource( 6 ) ],
 "loop": true,
 "name": "RightAttack",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ) ],
+"frames": [ ExtResource( 5 ) ],
 "loop": true,
 "name": "LeftAttack",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ) ],
+"frames": [ ExtResource( 4 ) ],
 "loop": true,
 "name": "UpDefend",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ) ],
+"frames": [ ExtResource( 6 ) ],
 "loop": true,
 "name": "RightDefend",
 "speed": 5.0

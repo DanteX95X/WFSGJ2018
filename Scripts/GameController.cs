@@ -35,6 +35,9 @@ namespace WFS
 
             defendLabel = (Label)GetNode("DefendLabel");
             defendLabelTimeMax = 1.0f;
+
+			getReadyLabel = (Label) GetNode("GetReadyLabel");
+			getReadyLabelTimeMax = 1.0f;
 			
 			foreach (var player in players)
 			{

@@ -18,7 +18,7 @@ namespace WFS
         private BaseController controller;
 
 		public PreNegateState(BaseController controller, List<Action> actions)
-		{
+		{	
 			transitionTime = (float)Global.config.GetValue("Config", "TransitionTime");
 			negateState = new NegateActionsState(controller, actions);
 			canChangeState = false;
@@ -26,6 +26,8 @@ namespace WFS
 			controller.Attacker.Animate(Action.Timeout);
 			controller.Defender.Animate(Action.Timeout);
             this.controller = controller;
+			
+			controller.ResetGetReadyLabel();
 		}
 		
 		public override State Update(float delta)

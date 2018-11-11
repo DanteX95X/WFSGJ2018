@@ -8,14 +8,22 @@ namespace WFS
 
 		private float transitionTime;
 		private float elapsedTime = 0.0f;
+		
+		private bool canChangeState;
 
 		static int sign = 1;
 		static bool isSignInit = false;
 
 		private ShaderMaterial material;
 
+		private BaseController controller;
+
 		public PreRecordState(BaseController controller, int attacksCount)
 		{
+			this.controller = controller;
+			
+			canChangeState = false;
+			
 			transitionTime = (float)Global.config.GetValue("Config", "TransitionTime");
 			if (!isSignInit)
 			{
@@ -25,9 +33,7 @@ namespace WFS
 			else
 				sign = -sign;
 
-            controller.ResetFightLabel();
-			AudioStreamPlayer stream = (AudioStreamPlayer)controller.GetNode("Sounds")?.GetNode("FightSound");
-			stream?.Play();
+            controller.ResetGetReadyLabel();
 
 			state = new RecordActionsState(controller, attacksCount);
 
@@ -42,19 +48,33 @@ namespace WFS
 		
 		public override State Update(float delta)
 		{
-			elapsedTime += delta;
-			float suwaczekValue = 0.0f;
-			if (sign == 1)
-				suwaczekValue = sign * (elapsedTime / transitionTime);
-			else if (sign == -1)
-				suwaczekValue = 1 + sign * (elapsedTime / transitionTime);
+			if (!canChangeState)
+			{
+				elapsedTime += delta;
+				float suwaczekValue = 0.0f;
+				if (sign == 1)
+					suwaczekValue = sign * (elapsedTime / transitionTime);
+				else if (sign == -1)
+					suwaczekValue = 1 + sign * (elapsedTime / transitionTime);
 
-			material?.SetShaderParam("suwaczek", suwaczekValue);
+				material?.SetShaderParam("suwaczek", suwaczekValue);
 
-			if (elapsedTime >= transitionTime)
-				return state;
+				if (elapsedTime >= transitionTime)
+					canChangeState = true;
+			}
 			else
-				return this;
+			{
+				if (Input.IsActionJustReleased("ui_accept"))
+				{
+					controller.ResetFightLabel();
+					AudioStreamPlayer stream = (AudioStreamPlayer)controller.GetNode("Sounds")?.GetNode("FightSound");
+					stream?.Play();
+					return state;
+				}
+			}
+			
+			return this;
+				
 		}
 	}
 }

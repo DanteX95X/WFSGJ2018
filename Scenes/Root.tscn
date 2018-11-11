@@ -78,23 +78,47 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 2 )
-text = "Fight"
+text = "Fight!"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Material", "Rect", "Visibility", "custom_fonts" ]
 
-[node name="DefendLabel" type="Label" parent="GameController" index="3"]
+[node name="GetReadyLabel" type="Label" parent="GameController" index="3"]
 
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 351.0
-margin_top = 70.0
-margin_right = 684.0
-margin_bottom = 221.0
+margin_left = 292.0
+margin_top = 64.0
+margin_right = 771.0
+margin_bottom = 215.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 2 )
+text = "Get Ready!"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Material", "Rect", "Visibility", "custom_fonts" ]
+
+[node name="DefendLabel" type="Label" parent="GameController" index="4"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 341.0
+margin_top = 67.0
+margin_right = 713.0
+margin_bottom = 218.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -102,13 +126,13 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 4 )
-text = "Defend"
+text = "Defend!"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect", "Visibility", "custom_fonts" ]
 
-[node name="Sounds" type="Node" parent="GameController" index="4"]
+[node name="Sounds" type="Node" parent="GameController" index="5"]
 
 [node name="FightSound" type="AudioStreamPlayer" parent="GameController/Sounds" index="0"]
 
@@ -155,7 +179,7 @@ autoplay = true
 mix_target = 0
 bus = "Master"
 
-[node name="Timer" type="Timer" parent="GameController" index="5"]
+[node name="Timer" type="Timer" parent="GameController" index="6"]
 
 process_mode = 1
 wait_time = 1.0

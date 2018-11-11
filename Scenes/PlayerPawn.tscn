@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://NegativeShaderMaterial.material" type="Material" id=1]
 [ext_resource path="res://Scripts/PlayerPawn.cs" type="Script" id=2]
@@ -14,7 +14,6 @@
 [ext_resource path="res://Textures/UpDefend.png" type="Texture" id=12]
 [ext_resource path="res://Textures/RightDefend.png" type="Texture" id=13]
 [ext_resource path="res://PlayerPawn.tres" type="Animation" id=14]
-[ext_resource path="res://Scripts/UI/HealthBar.cs" type="Script" id=15]
 
 [sub_resource type="SpriteFrames" id=3]
 
@@ -66,119 +65,6 @@ animations = [ {
 } ]
 _sections_unfolded = [ "Resource" ]
 
-[sub_resource type="StyleBoxFlat" id=4]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-bg_color = Color( 0, 0, 0, 1 )
-draw_center = true
-border_width_left = 0
-border_width_top = 0
-border_width_right = 0
-border_width_bottom = 0
-border_color = Color( 0.8, 0.8, 0.8, 1 )
-border_blend = false
-corner_radius_top_left = 0
-corner_radius_top_right = 0
-corner_radius_bottom_right = 0
-corner_radius_bottom_left = 0
-corner_detail = 8
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-shadow_color = Color( 0, 0, 0, 0.6 )
-shadow_size = 0
-anti_aliasing = true
-anti_aliasing_size = 1
-
-[sub_resource type="StyleBoxFlat" id=5]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-bg_color = Color( 0, 0, 0, 1 )
-draw_center = true
-border_width_left = 0
-border_width_top = 0
-border_width_right = 0
-border_width_bottom = 0
-border_color = Color( 0.8, 0.8, 0.8, 1 )
-border_blend = false
-corner_radius_top_left = 0
-corner_radius_top_right = 0
-corner_radius_bottom_right = 0
-corner_radius_bottom_left = 0
-corner_detail = 8
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-shadow_color = Color( 0, 0, 0, 0.6 )
-shadow_size = 0
-anti_aliasing = true
-anti_aliasing_size = 1
-
-[sub_resource type="StyleBoxFlat" id=1]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-bg_color = Color( 0, 0.992188, 0.0155029, 1 )
-draw_center = true
-border_width_left = 0
-border_width_top = 0
-border_width_right = 0
-border_width_bottom = 0
-border_color = Color( 0.8, 0.8, 0.8, 1 )
-border_blend = false
-corner_radius_top_left = 0
-corner_radius_top_right = 0
-corner_radius_bottom_right = 0
-corner_radius_bottom_left = 0
-corner_detail = 8
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-shadow_color = Color( 0, 0, 0, 0.6 )
-shadow_size = 0
-anti_aliasing = true
-anti_aliasing_size = 1
-_sections_unfolded = [ "Corner Radius" ]
-
-[sub_resource type="StyleBoxFlat" id=2]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-bg_color = Color( 0.996094, 0, 0, 1 )
-draw_center = true
-border_width_left = 0
-border_width_top = 0
-border_width_right = 0
-border_width_bottom = 0
-border_color = Color( 0.8, 0.8, 0.8, 1 )
-border_blend = false
-corner_radius_top_left = 0
-corner_radius_top_right = 0
-corner_radius_bottom_right = 0
-corner_radius_bottom_left = 0
-corner_detail = 8
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-shadow_color = Color( 0, 0, 0, 0.6 )
-shadow_size = 0
-anti_aliasing = true
-anti_aliasing_size = 1
-
 [node name="PlayerPawn" type="Area2D"]
 
 material = ExtResource( 1 )
@@ -228,62 +114,5 @@ playback_speed = 1.0
 anims/movement = ExtResource( 14 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
-
-[node name="ProgressBar" type="ProgressBar" parent="." index="4"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = -124.0
-margin_top = -243.0
-margin_right = 123.0
-margin_bottom = -194.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 0
-custom_styles/fg = SubResource( 4 )
-custom_styles/bg = SubResource( 5 )
-min_value = 0.0
-max_value = 100.0
-step = 1.0
-page = 0.0
-value = 0.0
-exp_edit = false
-rounded = false
-percent_visible = false
-_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Material", "Mouse", "Percent", "Rect", "Size Flags", "Theme", "Visibility", "custom_colors", "custom_fonts", "custom_styles" ]
-
-[node name="HealthBar" type="ProgressBar" parent="." index="5"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = -119.0
-margin_top = -238.0
-margin_right = 117.0
-margin_bottom = -199.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 0
-custom_styles/fg = SubResource( 1 )
-custom_styles/bg = SubResource( 2 )
-min_value = 0.0
-max_value = 100.0
-step = 1.0
-page = 0.0
-value = 0.0
-exp_edit = false
-rounded = false
-percent_visible = true
-script = ExtResource( 15 )
-_sections_unfolded = [ "Material", "custom_fonts", "custom_styles" ]
 
 

@@ -1,16 +1,129 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://NegativeShaderMaterial.material" type="Material" id=1]
 [ext_resource path="res://Textures/Biggies/P1010135.JPG" type="Texture" id=2]
 [ext_resource path="res://Scripts/GameController.cs" type="Script" id=3]
 [ext_resource path="res://Scenes/PlayerPawn.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/StarEffect.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Sound/276254__dynajinn__fight-voiceover-fight.wav" type="AudioStream" id=6]
-[ext_resource path="res://Sound/grunt.wav" type="AudioStream" id=7]
-[ext_resource path="res://Sound/whoosh.wav" type="AudioStream" id=8]
-[ext_resource path="res://Sound/ko.wav" type="AudioStream" id=9]
-[ext_resource path="res://Sound/bgm.wav" type="AudioStream" id=10]
-[ext_resource path="res://Sound/get_ready.wav" type="AudioStream" id=11]
+[ext_resource path="res://Scripts/UI/HealthBar.cs" type="Script" id=6]
+[ext_resource path="res://Sound/276254__dynajinn__fight-voiceover-fight.wav" type="AudioStream" id=7]
+[ext_resource path="res://Sound/grunt.wav" type="AudioStream" id=8]
+[ext_resource path="res://Sound/whoosh.wav" type="AudioStream" id=9]
+[ext_resource path="res://Sound/ko.wav" type="AudioStream" id=10]
+[ext_resource path="res://Sound/bgm.wav" type="AudioStream" id=11]
+[ext_resource path="res://Sound/get_ready.wav" type="AudioStream" id=12]
+
+[sub_resource type="StyleBoxFlat" id=7]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0, 0, 0, 1 )
+draw_center = true
+border_width_left = 0
+border_width_top = 0
+border_width_right = 0
+border_width_bottom = 0
+border_color = Color( 0.8, 0.8, 0.8, 1 )
+border_blend = false
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+
+[sub_resource type="StyleBoxFlat" id=8]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0.0117188, 0.0117188, 0.0117188, 1 )
+draw_center = true
+border_width_left = 0
+border_width_top = 0
+border_width_right = 0
+border_width_bottom = 0
+border_color = Color( 0.8, 0.8, 0.8, 1 )
+border_blend = false
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+
+[sub_resource type="StyleBoxFlat" id=5]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0.0349274, 0.425781, 0.251729, 1 )
+draw_center = true
+border_width_left = 0
+border_width_top = 0
+border_width_right = 0
+border_width_bottom = 0
+border_color = Color( 0.8, 0.8, 0.8, 1 )
+border_blend = false
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+
+[sub_resource type="StyleBoxFlat" id=6]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0.566406, 0.042038, 0.042038, 1 )
+draw_center = true
+border_width_left = 0
+border_width_top = 0
+border_width_right = 0
+border_width_bottom = 0
+border_color = Color( 0.8, 0.8, 0.8, 1 )
+border_blend = false
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
 
 [sub_resource type="DynamicFontData" id=1]
 
@@ -38,7 +151,7 @@ use_filter = false
 font_data = SubResource( 3 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Root" type="Node"]
+[node name="Root" type="Node" index="0"]
 
 [node name="Background" type="TextureRect" parent="." index="0"]
 
@@ -67,6 +180,7 @@ _sections_unfolded = [ "Pause" ]
 
 [node name="Player1" parent="Background/GameController" index="0" instance=ExtResource( 4 )]
 
+position = Vector2( 325.709, 276.719 )
 second = true
 
 [node name="Blood" parent="Background/GameController/Player1" index="3" instance=ExtResource( 5 )]
@@ -74,13 +188,127 @@ second = true
 position = Vector2( -3.79205, 178.442 )
 rotation = 3.13774
 
+[node name="Border" type="ProgressBar" parent="Background/GameController/Player1" index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -313.0
+margin_top = -259.0
+margin_right = 177.0
+margin_bottom = -212.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+custom_styles/fg = SubResource( 7 )
+custom_styles/bg = SubResource( 8 )
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 0.0
+exp_edit = false
+rounded = false
+percent_visible = true
+_sections_unfolded = [ "Visibility", "custom_styles" ]
+
+[node name="HealthBar" type="ProgressBar" parent="Background/GameController/Player1" index="6"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -308.0
+margin_top = -254.0
+margin_right = 171.0
+margin_bottom = -217.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+custom_styles/fg = SubResource( 5 )
+custom_styles/bg = SubResource( 6 )
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 0.0
+exp_edit = false
+rounded = false
+percent_visible = true
+script = ExtResource( 6 )
+_sections_unfolded = [ "Visibility", "custom_styles" ]
+
 [node name="Player2" parent="Background/GameController" index="1" instance=ExtResource( 4 )]
 
-position = Vector2( 736.025, 263.359 )
+position = Vector2( 708.235, 275.855 )
 
 [node name="Blood" parent="Background/GameController/Player2" index="3" instance=ExtResource( 5 )]
 
 position = Vector2( -1.6665, 174.525 )
+
+[node name="Border" type="ProgressBar" parent="Background/GameController/Player2" index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -179.0
+margin_top = -258.0
+margin_right = 311.0
+margin_bottom = -211.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+custom_styles/fg = SubResource( 7 )
+custom_styles/bg = SubResource( 8 )
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 0.0
+exp_edit = false
+rounded = false
+percent_visible = true
+_sections_unfolded = [ "Visibility", "custom_styles" ]
+
+[node name="HealthBar" type="ProgressBar" parent="Background/GameController/Player2" index="6"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -174.0
+margin_top = -253.0
+margin_right = 305.0
+margin_bottom = -216.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+custom_styles/fg = SubResource( 5 )
+custom_styles/bg = SubResource( 6 )
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 0.0
+exp_edit = false
+rounded = false
+percent_visible = true
+script = ExtResource( 6 )
+_sections_unfolded = [ "Visibility", "custom_styles" ]
 
 [node name="FightLabel" type="Label" parent="Background/GameController" index="2"]
 
@@ -158,7 +386,7 @@ _sections_unfolded = [ "Rect", "Visibility", "custom_fonts" ]
 
 [node name="FightSound" type="AudioStreamPlayer" parent="Background/GameController/Sounds" index="0"]
 
-stream = ExtResource( 6 )
+stream = ExtResource( 7 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
@@ -167,7 +395,7 @@ bus = "Master"
 
 [node name="GruntSound" type="AudioStreamPlayer" parent="Background/GameController/Sounds" index="1"]
 
-stream = ExtResource( 7 )
+stream = ExtResource( 8 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
@@ -176,7 +404,7 @@ bus = "Master"
 
 [node name="EvadeSound" type="AudioStreamPlayer" parent="Background/GameController/Sounds" index="2"]
 
-stream = ExtResource( 8 )
+stream = ExtResource( 9 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
@@ -185,7 +413,7 @@ bus = "Master"
 
 [node name="KOSound" type="AudioStreamPlayer" parent="Background/GameController/Sounds" index="3"]
 
-stream = ExtResource( 9 )
+stream = ExtResource( 10 )
 volume_db = 5.0
 pitch_scale = 1.0
 autoplay = false
@@ -194,7 +422,7 @@ bus = "Master"
 
 [node name="BGM" type="AudioStreamPlayer" parent="Background/GameController/Sounds" index="4"]
 
-stream = ExtResource( 10 )
+stream = ExtResource( 11 )
 volume_db = -5.0
 pitch_scale = 1.0
 autoplay = true
@@ -203,7 +431,7 @@ bus = "Master"
 
 [node name="GetReadySound" type="AudioStreamPlayer" parent="Background/GameController/Sounds" index="5"]
 
-stream = ExtResource( 11 )
+stream = ExtResource( 12 )
 volume_db = 1.5
 pitch_scale = 1.0
 autoplay = false

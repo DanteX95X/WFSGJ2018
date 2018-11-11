@@ -1,14 +1,14 @@
 [gd_resource type="SpriteFrames" load_steps=10 format=2]
 
 [ext_resource path="res://Textures/Idle.png" type="Texture" id=1]
-[ext_resource path="res://Textures/DownDefend.png" type="Texture" id=2]
-[ext_resource path="res://Textures/LeftDefend.png" type="Texture" id=3]
-[ext_resource path="res://Textures/RightAttack.png" type="Texture" id=4]
-[ext_resource path="res://Textures/LeftAttack.png" type="Texture" id=5]
-[ext_resource path="res://Textures/DownAttack.png" type="Texture" id=6]
-[ext_resource path="res://Textures/RightDefend.png" type="Texture" id=7]
+[ext_resource path="res://Textures/DownAttack.png" type="Texture" id=2]
+[ext_resource path="res://Textures/UpAttack.png" type="Texture" id=3]
+[ext_resource path="res://Textures/DownDefend.png" type="Texture" id=4]
+[ext_resource path="res://Textures/LeftDefend.png" type="Texture" id=5]
+[ext_resource path="res://Textures/RightAttack.png" type="Texture" id=6]
+[ext_resource path="res://Textures/LeftAttack.png" type="Texture" id=7]
 [ext_resource path="res://Textures/UpDefend.png" type="Texture" id=8]
-[ext_resource path="res://Textures/UpAttack.png" type="Texture" id=9]
+[ext_resource path="res://Textures/RightDefend.png" type="Texture" id=9]
 
 [resource]
 
@@ -20,32 +20,32 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
-"name": "DownDefend",
+"name": "DownAttack",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
-"name": "LeftDefend",
+"name": "UpAttack",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
-"name": "RightAttack",
+"name": "DownDefend",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
-"name": "LeftAttack",
+"name": "LeftDefend",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
-"name": "DownAttack",
+"name": "RightAttack",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 7 ) ],
 "loop": true,
-"name": "RightDefend",
+"name": "LeftAttack",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 8 ) ],
@@ -55,7 +55,12 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 9 ) ],
 "loop": true,
-"name": "UpAttack",
+"name": "RightDefend",
+"speed": 5.0
+}, {
+"frames": [ null ],
+"loop": true,
+"name": "None",
 "speed": 5.0
 } ]
 

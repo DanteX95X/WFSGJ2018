@@ -143,6 +143,10 @@ namespace WFS
         public void SetAnimation(string animationStr)
         {
             animatedSprite.Animation = animationStr;
+            if (animationStr == "Idle")
+            {
+                animationStr = "None";
+            }
             prompt.Animation = animationStr;
         }
 

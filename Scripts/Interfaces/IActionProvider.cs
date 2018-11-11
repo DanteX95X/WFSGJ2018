@@ -13,5 +13,6 @@ namespace WFS
 		BaseController controller { set; }
 		void Animate(Action action);
 		Particles2D Blood { get; set; }
+		bool IsInputAllowed();
 	}
 }

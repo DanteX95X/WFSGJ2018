@@ -7,7 +7,7 @@ namespace WFS
 		private IActionProvider deadman;
 		private BaseController controller;
 
-		private float timer = 3;
+		private float timer = 1.5f;
 		private float timePassed;
 		
 		private AudioStreamPlayer koSound;

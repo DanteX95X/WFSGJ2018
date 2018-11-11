@@ -16,6 +16,8 @@ namespace WFS
 
 		public override void _Process(float delta)
 		{
+			Visible = Player.IsInputAllowed();
+			
 			this.SetValue(1.0f - Player.Timer / MaxTimerValue);
 		}
 	}

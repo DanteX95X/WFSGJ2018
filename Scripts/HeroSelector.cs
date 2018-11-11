@@ -37,21 +37,21 @@ namespace WFS
 
         public override void _Process(float delta)
         {
-            if (!playerOneLock && playerOneIndex < amount - 1 && (Input.IsActionJustReleased("ui_up") || Input.IsActionJustReleased("ui_right")))
+            if (!playerOneLock && playerOneIndex < amount - 1 && (Input.IsActionJustReleased("ui_up_second") || Input.IsActionJustReleased("ui_right_second")))
             {
                 characterChoices[playerOneIndex++].Unchosen(PlayerChoice.One);
             }
-            else if (!playerOneLock && playerOneIndex > 0 && (Input.IsActionJustReleased("ui_left") || Input.IsActionJustReleased("ui_down")))
+            else if (!playerOneLock && playerOneIndex > 0 && (Input.IsActionJustReleased("ui_left_second") || Input.IsActionJustReleased("ui_down_second")))
             {
                 characterChoices[playerOneIndex--].Unchosen(PlayerChoice.One);
             }
             if (!singlePlayerMode)
             {
-                if (!playerTwoLock && playerTwoIndex < amount - 1 && (Input.IsActionJustReleased("ui_up_second") || Input.IsActionJustReleased("ui_right_second")))
+                if (!playerTwoLock && playerTwoIndex < amount - 1 && (Input.IsActionJustReleased("ui_up") || Input.IsActionJustReleased("ui_right")))
                 {
                     characterChoices[playerTwoIndex++].Unchosen(PlayerChoice.Two);
                 }
-                else if (!playerTwoLock && playerTwoIndex > 0 && (Input.IsActionJustReleased("ui_left_second") || Input.IsActionJustReleased("ui_down_second")))
+                else if (!playerTwoLock && playerTwoIndex > 0 && (Input.IsActionJustReleased("ui_left") || Input.IsActionJustReleased("ui_down")))
                 {
                     characterChoices[playerTwoIndex--].Unchosen(PlayerChoice.Two);
                 }
@@ -60,12 +60,12 @@ namespace WFS
             characterChoices[playerOneIndex].Chosen(PlayerChoice.One);
             characterChoices[playerTwoIndex].Chosen(PlayerChoice.Two);
 
-            if (Input.IsActionJustReleased("ui_accept"))
+            if (Input.IsActionJustReleased("ui_accept_second"))
             {
                 characterChoices[playerOneIndex].ConfirmChoice(PlayerChoice.One);
                 playerOneLock = true;
             }
-            if (Input.IsActionJustReleased("ui_accept_second"))
+            if (Input.IsActionJustReleased("ui_accept"))
             {
                 characterChoices[playerTwoIndex].ConfirmChoice(PlayerChoice.Two);
                 playerTwoLock = true;

@@ -180,7 +180,7 @@ namespace WFS
 			get { return timePassed; }
 		}
 
-        protected bool IsInputAllowed()
+        public bool IsInputAllowed()
         {
             return (controller.Attacker == this && controller.CurrentState is RecordActionsState) || (controller.Defender == this && controller.CurrentState is NegateActionsState);
         }

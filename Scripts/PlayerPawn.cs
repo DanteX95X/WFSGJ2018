@@ -4,10 +4,10 @@ using System.Collections;
 
 namespace WFS
 {
-	public class PlayerPawn : Area2D, IActionProvider
-	{
-		[Export]
-		public bool second;
+    public class PlayerPawn : Area2D, IActionProvider
+    {
+        [Export]
+        public bool second;
 
 		protected Action movementState;
 		private AnimatedSprite animatedSprite;
@@ -19,25 +19,18 @@ namespace WFS
 		private float timer = 2;
 		private float timePassed = 0;
 
-		private bool isAnimating = false;
+        private bool isAnimating = false;
 
 		public Particles2D Blood { get; set; }		
 		
 		public BaseController controller { get; set; }
 		
 		private Dictionary<Action, string> actionToAnimation;
-		public override void _Ready()
-		{
-			healthMax = (int)Global.config.GetValue("Config", "InitHealth");
-			healthCurrent = healthMax;
 
-			actionToAnimation = new Dictionary<Action, string>();
-
-			actionToAnimation[Action.NegativeSecond] = "Left";
-			actionToAnimation[Action.NegativeFirst] = "Down";
-			actionToAnimation[Action.Timeout] = "Idle";
-			actionToAnimation[Action.PositiveFirst] = "Up";
-			actionToAnimation[Action.PositiveSecond] = "Right";
+        public override void _Ready()
+        {
+            healthMax = (int)Global.config.GetValue("Config", "InitHealth");
+            healthCurrent = healthMax;
 
 			movementState = Action.Timeout;
 			animatedSprite = (AnimatedSprite)GetNode("AnimatedSprite");

@@ -16,7 +16,7 @@ namespace WFS
 
 		public override State Update(float delta)
 		{
-			if (Input.IsActionJustReleased("ui_accept"))
+			if (Input.IsActionJustReleased("ui_accept") || Input.IsActionJustReleased("ui_accept"))
 			{
 				controller.ResetDefendLabel();
 				return state;

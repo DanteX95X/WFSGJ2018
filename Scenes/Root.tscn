@@ -126,7 +126,7 @@ shadow_size = 0
 anti_aliasing = true
 anti_aliasing_size = 1
 
-[sub_resource type="StyleBoxFlat" id=11]
+[sub_resource type="StyleBoxFlat" id=5]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
@@ -155,7 +155,7 @@ anti_aliasing = true
 anti_aliasing_size = 1
 _sections_unfolded = [ "Border", "Border Width" ]
 
-[sub_resource type="StyleBoxFlat" id=12]
+[sub_resource type="StyleBoxFlat" id=6]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
@@ -184,7 +184,7 @@ anti_aliasing = true
 anti_aliasing_size = 1
 _sections_unfolded = [ "Border", "Border Width" ]
 
-[sub_resource type="StyleBoxFlat" id=9]
+[sub_resource type="StyleBoxFlat" id=7]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
@@ -213,7 +213,7 @@ anti_aliasing = true
 anti_aliasing_size = 1
 _sections_unfolded = [ "Border", "Border Width" ]
 
-[sub_resource type="StyleBoxFlat" id=10]
+[sub_resource type="StyleBoxFlat" id=8]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
@@ -242,33 +242,33 @@ anti_aliasing = true
 anti_aliasing_size = 1
 _sections_unfolded = [ "Border", "Border Width" ]
 
-[sub_resource type="DynamicFontData" id=5]
+[sub_resource type="DynamicFontData" id=9]
 
 hinting = 1
 font_path = "res://Fonts/Bombing.ttf"
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=10]
 
 size = 150
 use_mipmaps = false
 use_filter = false
-font_data = SubResource( 5 )
+font_data = SubResource( 9 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="DynamicFontData" id=7]
+[sub_resource type="DynamicFontData" id=11]
 
 hinting = 2
 font_path = "res://Fonts/Bombing.ttf"
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=12]
 
 size = 150
 use_mipmaps = false
 use_filter = true
-font_data = SubResource( 7 )
+font_data = SubResource( 11 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Root" type="Node" index="0"]
+[node name="Root" type="Node"]
 
 [node name="Background" type="TextureRect" parent="." index="0"]
 
@@ -379,8 +379,8 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 0
-custom_styles/fg = SubResource( 11 )
-custom_styles/bg = SubResource( 12 )
+custom_styles/fg = SubResource( 5 )
+custom_styles/bg = SubResource( 6 )
 min_value = 0.0
 max_value = 1.0
 step = 1.0
@@ -475,8 +475,8 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 0
-custom_styles/fg = SubResource( 9 )
-custom_styles/bg = SubResource( 10 )
+custom_styles/fg = SubResource( 7 )
+custom_styles/bg = SubResource( 8 )
 min_value = 0.0
 max_value = 1.0
 step = 1.0
@@ -505,7 +505,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 10 )
 text = "Fight!"
 percent_visible = 1.0
 lines_skipped = 0
@@ -529,7 +529,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 10 )
 text = "Get Ready!"
 percent_visible = 1.0
 lines_skipped = 0
@@ -553,7 +553,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 12 )
 text = "Defend!"
 percent_visible = 1.0
 lines_skipped = 0
@@ -577,7 +577,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 12 )
 text = "K.O.!"
 percent_visible = 1.0
 lines_skipped = 0

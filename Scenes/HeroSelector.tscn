@@ -24,7 +24,7 @@
 [ext_resource path="res://Textures/portaits/something.png" type="Texture" id=22]
 [ext_resource path="res://Textures/portaits/nessie.png" type="Texture" id=23]
 
-[node name="HeroSelector" type="Node" index="0"]
+[node name="HeroSelector" type="Node"]
 
 script = ExtResource( 1 )
 amount = 2
@@ -33,7 +33,7 @@ amount = 2
 
 position = Vector2( 160.174, 123.798 )
 scale = Vector2( 1.5, 1.5 )
-name = "pokemon"
+name = "tryout"
 P1Check = true
 P2Check = true
 portait = ExtResource( 3 )

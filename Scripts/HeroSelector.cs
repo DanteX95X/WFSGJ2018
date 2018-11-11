@@ -20,6 +20,14 @@ namespace WFS
         {
             characterChoices = new List<CharacterChoice>();
 
+            WFS.Global global = (WFS.Global)GetNode("/root/Global");
+            singlePlayerMode = global.singlePlayer;
+
+            // if (singlePlayerMode)
+            // {
+            //     playerTwoLock = false;
+            //     characterChoices[playerTwoIndex].Unchosen(PlayerChoice.Two);
+            // }
             foreach (var node in GetChildren())
             {
                 if (node != null)
@@ -63,7 +71,7 @@ namespace WFS
                 playerTwoLock = true;
             }
 
-            if (playerOneLock && playerTwoLock)
+            if (playerOneLock && (playerTwoLock || singlePlayerMode))
             {
                 WFS.Global global = (WFS.Global)GetNode("/root/Global");
                 global.FirstCharacterSpriteFrameSelection = characterChoices[playerOneIndex].name;

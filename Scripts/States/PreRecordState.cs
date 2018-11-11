@@ -69,7 +69,7 @@ namespace WFS
 			}
 			else
 			{
-				if (Input.IsActionJustReleased("ui_accept"))
+				if (Input.IsActionJustReleased("ui_accept") || Input.IsActionJustReleased("ui_accept_second"))
 				{
 					controller.ResetFightLabel();
 					AudioStreamPlayer stream = (AudioStreamPlayer)controller.GetNode("Sounds")?.GetNode("FightSound");

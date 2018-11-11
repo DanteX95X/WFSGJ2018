@@ -53,6 +53,8 @@
     <Compile Include="Scripts\AnimationMulti.cs" />
     <Compile Include="Scripts\AnimationSingle.cs" />
     <Compile Include="Scripts\BaseController.cs" />
+    <Compile Include="Scripts\CharacterChoice.cs" />
+    <Compile Include="Scripts\HeroSelector.cs" />
     <Compile Include="Scripts\MultiAnimation.cs" />
     <Compile Include="Scripts\PlayerPawn.cs" />
     <Compile Include="Scripts\Enums\Action.cs" />

@@ -147,7 +147,7 @@ font_path = "res://Fonts/Bombing.ttf"
 
 size = 150
 use_mipmaps = false
-use_filter = false
+use_filter = true
 font_data = SubResource( 3 )
 _sections_unfolded = [ "Font", "Settings" ]
 
@@ -382,7 +382,31 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect", "Visibility", "custom_fonts" ]
 
-[node name="Sounds" type="Node" parent="Background/GameController" index="5"]
+[node name="KOLabel" type="Label" parent="Background/GameController" index="5"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 419.0
+margin_top = 92.0
+margin_right = 791.0
+margin_bottom = 243.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 4 )
+text = "K.O.!"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Visibility", "custom_fonts" ]
+
+[node name="Sounds" type="Node" parent="Background/GameController" index="6"]
 
 [node name="FightSound" type="AudioStreamPlayer" parent="Background/GameController/Sounds" index="0"]
 
@@ -437,12 +461,5 @@ pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
-
-[node name="Timer" type="Timer" parent="Background/GameController" index="6"]
-
-process_mode = 1
-wait_time = 1.0
-one_shot = false
-autostart = false
 
 

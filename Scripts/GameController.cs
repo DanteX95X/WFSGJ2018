@@ -38,6 +38,9 @@ namespace WFS
 
 			getReadyLabel = (Label) GetNode("GetReadyLabel");
 			getReadyLabelTimeMax = 1.0f;
+
+			koLabel = (Label) GetNode("KOLabel");
+			koLabelTimeMax = 1.0f;
 			
 			foreach (var player in players)
 			{

@@ -21,12 +21,16 @@ namespace WFS
 		public Label getReadyLabel;
 		public float getReadyLabelTimer;
 		public float getReadyLabelTimeMax;
+		public Label koLabel;
+		public float koLabelTimer;
+		public float koLabelTimeMax;
 
         public void ResetFightLabel()
         {
             fightLabel.Show();
 	        defendLabel.Hide();
 	        getReadyLabel.Hide();
+	        koLabel.Hide();
             fightLabelTimer = 0;
         }
 
@@ -35,6 +39,7 @@ namespace WFS
 			getReadyLabel.Show();
 			fightLabel.Hide();
 			defendLabel.Hide();
+			koLabel.Hide();
 			getReadyLabelTimer = 0;
 		}
 
@@ -43,8 +48,18 @@ namespace WFS
             defendLabel.Show();
 	        fightLabel.Hide();
 	        getReadyLabel.Hide();
+	        koLabel.Hide();
             defendLabelTimer = 0;
         }
+
+		public void ResetKOLabel()
+		{
+			koLabel.Show();
+			fightLabel.Hide();
+			defendLabel.Hide();
+			getReadyLabel.Hide();
+			koLabelTimer = 0;
+		}
 		
 		public void ProcessLabels(float delta)
 		{
@@ -69,6 +84,13 @@ namespace WFS
 			{
 				getReadyLabel.Hide();
 			}
+
+			koLabelTimer += delta;
+
+			if (koLabelTimer > koLabelTimeMax)
+			{
+				koLabel.Hide();
+			}
 		}
 		
 		public int Turn
@@ -86,12 +108,6 @@ namespace WFS
 		public override void _Process(float delta)
 		{
 			state = state?.Update(delta);
-		}
-		
-		public void TransferToMenu()
-		{
-			Global global = (Global)GetNode("/root/Global");
-			global.GotoScene("res://Scenes/MainMenu.tscn");
 		}
 		
 	}

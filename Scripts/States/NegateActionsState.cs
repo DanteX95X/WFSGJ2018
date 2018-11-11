@@ -17,7 +17,6 @@ namespace WFS
 
 		private AudioStreamPlayer gruntSound;
 		private AudioStreamPlayer evadeSound;
-		private AudioStreamPlayer koSound;
 
 		private Timer timerNode;
 		
@@ -34,7 +33,6 @@ namespace WFS
 
 			gruntSound = (AudioStreamPlayer)this.controller.GetNode("Sounds").GetNode("GruntSound");
 			evadeSound = (AudioStreamPlayer)this.controller.GetNode("Sounds").GetNode("EvadeSound");
-			koSound = (AudioStreamPlayer)this.controller.GetNode("Sounds").GetNode("KOSound");
 
 			timerNode = (Timer) this.controller.GetNode("Timer");
 		}
@@ -75,12 +73,9 @@ namespace WFS
 					GD.Print("HP " + defender.Health);
 					if (defender.Health <= 0)
 					{
-						koSound.Play();
+						
 						GD.Print("Game over");
-						timerNode.Connect("timeout", controller, nameof(controller.TransferToMenu));
-						timerNode.SetWaitTime(2);
-						timerNode.Start();
-						return null;
+						return new DeathState(controller, defender);
 					}
 				}
 
@@ -100,12 +95,8 @@ namespace WFS
 					GD.Print("HP " + defender.Health);
 					if (defender.Health <= 0)
 					{
-						koSound.Play();
 						GD.Print("Game over");
-						timerNode.Connect("timeout", controller, nameof(controller.TransferToMenu));
-						timerNode.SetWaitTime(2);
-						timerNode.Start();
-						return null;
+						return new DeathState(controller, defender);
 					}
 					
 					++iterator;

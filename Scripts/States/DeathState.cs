@@ -21,7 +21,7 @@ namespace WFS
 			
 			koSound = (AudioStreamPlayer)this.controller.GetNode("Sounds").GetNode("KOSound");
 			koSound.Play();
-			deadman.Animate(Action.NegativeFirst);
+			deadman.Animate(Action.Death);
 			controller.ResetKOLabel();
 		}
 

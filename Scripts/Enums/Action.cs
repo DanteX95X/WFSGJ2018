@@ -4,6 +4,7 @@ namespace WFS
 {
     public enum Action
     {
+        Death = -3,
         NegativeSecond = -2,
         NegativeFirst = -1,
         Timeout = 0,

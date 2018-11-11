@@ -24,7 +24,7 @@
 [ext_resource path="res://Textures/portaits/something.png" type="Texture" id=22]
 [ext_resource path="res://Textures/portaits/nessie.png" type="Texture" id=23]
 
-[node name="HeroSelector" type="Node"]
+[node name="HeroSelector" type="Node" index="0"]
 
 script = ExtResource( 1 )
 amount = 2

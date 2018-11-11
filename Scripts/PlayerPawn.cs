@@ -34,6 +34,7 @@ namespace WFS
 
             actionToAnimation = new Dictionary<Action, string>();
 
+            actionToAnimation[Action.Death] = "Death";
             actionToAnimation[Action.NegativeSecond] = "Left";
             actionToAnimation[Action.NegativeFirst] = "Down";
             actionToAnimation[Action.Timeout] = "Idle";
@@ -94,7 +95,7 @@ namespace WFS
             if (IsPerformingAction)
             {
                 string animation = actionToAnimation[movementState];
-                if (animation != "Idle")
+                if (animation != "Idle" && animation != "Death")
                 {
                     if (controller.Defender == this)
                     {

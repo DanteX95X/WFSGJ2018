@@ -15,6 +15,11 @@
 [resource]
 
 animations = [ {
+"frames": [ null ],
+"loop": true,
+"name": "None",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 1 ) ],
 "loop": true,
 "name": "Idle",
@@ -61,13 +66,8 @@ animations = [ {
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 10 ), ExtResource( 11 ) ],
-"loop": true,
+"loop": false,
 "name": "Death",
-"speed": 5.0
-}, {
-"frames": [ null ],
-"loop": true,
-"name": "None",
 "speed": 5.0
 } ]
 

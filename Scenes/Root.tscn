@@ -9,7 +9,7 @@
 [ext_resource path="res://Sound/ko.wav" type="AudioStream" id=7]
 [ext_resource path="res://Sound/bgm.wav" type="AudioStream" id=8]
 
-[node name="Root" type="Node" index="0"]
+[node name="Root" type="Node"]
 
 [node name="GameController" type="Node" parent="." index="0"]
 

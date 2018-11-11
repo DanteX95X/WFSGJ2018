@@ -22,12 +22,14 @@ namespace WFS
         public void ResetFightLabel()
         {
             fightLabel.Show();
+	        defendLabel.Hide();
             fightLabelTimer = 0;
         }
 
         public void ResetDefendLabel()
         {
             defendLabel.Show();
+	        fightLabel.Hide();
             defendLabelTimer = 0;
         }
 		

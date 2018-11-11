@@ -27,7 +27,7 @@
 [node name="HeroSelector" type="Node" index="0"]
 
 script = ExtResource( 1 )
-amount = 3
+amount = 2
 
 [node name="CharacterChoice" parent="." index="0" instance=ExtResource( 2 )]
 
@@ -174,7 +174,7 @@ portait = ExtResource( 22 )
 
 [node name="CharacterChoice24" parent="." index="20" instance=ExtResource( 2 )]
 
-position = Vector2( 884.696, 443.393 )
+position = Vector2( 882.051, 443.848 )
 scale = Vector2( 1.5, 1.5 )
 locked = true
 portait = ExtResource( 23 )

@@ -20,6 +20,7 @@ namespace WFS
 
 		private bool isAnimating = false;
 
+		public Particles2D Blood { get; set; }		
 		
 		public BaseController controller { get; set; }
 		
@@ -45,6 +46,8 @@ namespace WFS
 			animatedSprite.FlipV = false;
 
 			animatedSprite.Play();
+
+			Blood = (Particles2D)GetNode("Blood");
 		}
 
 		public override void _Process(float delta)

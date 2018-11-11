@@ -1,4 +1,5 @@
 using System;
+using Godot;
 
 namespace WFS
 {
@@ -10,5 +11,6 @@ namespace WFS
 		void Reset();
 		BaseController controller { set; }
 		void Animate(Action action);
+		Particles2D Blood { get; set; }
 	}
 }

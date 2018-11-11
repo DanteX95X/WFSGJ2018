@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/GameController.cs" type="Script" id=1]
 [ext_resource path="res://Scenes/PlayerPawn.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Sound/276254__dynajinn__fight-voiceover-fight.wav" type="AudioStream" id=3]
-[ext_resource path="res://Sound/grunt.wav" type="AudioStream" id=4]
-[ext_resource path="res://Sound/whoosh.wav" type="AudioStream" id=5]
-[ext_resource path="res://Sound/ko.wav" type="AudioStream" id=6]
-[ext_resource path="res://Sound/bgm.wav" type="AudioStream" id=7]
+[ext_resource path="res://Scenes/StarEffect.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Sound/276254__dynajinn__fight-voiceover-fight.wav" type="AudioStream" id=4]
+[ext_resource path="res://Sound/grunt.wav" type="AudioStream" id=5]
+[ext_resource path="res://Sound/whoosh.wav" type="AudioStream" id=6]
+[ext_resource path="res://Sound/ko.wav" type="AudioStream" id=7]
+[ext_resource path="res://Sound/bgm.wav" type="AudioStream" id=8]
 
 [node name="Root" type="Node" index="0"]
 
@@ -19,9 +20,19 @@ _sections_unfolded = [ "Pause" ]
 
 second = true
 
+[node name="Blood" parent="GameController/Player1" index="3" instance=ExtResource( 3 )]
+
+position = Vector2( -2.43167, -9.29001 )
+rotation = 3.13774
+scale = Vector2( 1, 1 )
+
 [node name="Player2" parent="GameController" index="1" instance=ExtResource( 2 )]
 
 position = Vector2( 736.025, 263.359 )
+
+[node name="Blood" parent="GameController/Player2" index="3" instance=ExtResource( 3 )]
+
+position = Vector2( 2.41455, -7.76495 )
 
 [node name="FightLabel" type="Label" parent="GameController" index="2"]
 
@@ -77,7 +88,7 @@ _sections_unfolded = [ "Rect", "Visibility" ]
 
 [node name="FightSound" type="AudioStreamPlayer" parent="GameController/Sounds" index="0"]
 
-stream = ExtResource( 3 )
+stream = ExtResource( 4 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
@@ -86,7 +97,7 @@ bus = "Master"
 
 [node name="GruntSound" type="AudioStreamPlayer" parent="GameController/Sounds" index="1"]
 
-stream = ExtResource( 4 )
+stream = ExtResource( 5 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
@@ -95,7 +106,7 @@ bus = "Master"
 
 [node name="EvadeSound" type="AudioStreamPlayer" parent="GameController/Sounds" index="2"]
 
-stream = ExtResource( 5 )
+stream = ExtResource( 6 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
@@ -104,7 +115,7 @@ bus = "Master"
 
 [node name="KOSound" type="AudioStreamPlayer" parent="GameController/Sounds" index="3"]
 
-stream = ExtResource( 6 )
+stream = ExtResource( 7 )
 volume_db = 5.0
 pitch_scale = 1.0
 autoplay = false
@@ -113,7 +124,7 @@ bus = "Master"
 
 [node name="BGM" type="AudioStreamPlayer" parent="GameController/Sounds" index="4"]
 
-stream = ExtResource( 7 )
+stream = ExtResource( 8 )
 volume_db = -5.0
 pitch_scale = 1.0
 autoplay = true

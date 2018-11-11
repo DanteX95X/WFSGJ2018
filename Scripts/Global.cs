@@ -3,44 +3,50 @@ using System.Collections.Generic;
 
 namespace WFS
 {
-	public class Global : Node
-	{
-		static public ConfigFile config;
+    public class Global : Node
+    {
+        static public ConfigFile config;
 
-		public bool singlePlayer = false;
-		public Node CurrentScene { get; set; }
+        public bool singlePlayer = false;
+        public Node CurrentScene { get; set; }
 
-		public override void _Ready()
-		{
-			config = new ConfigFile();
-			config.Load("res://GameConfig.cfg");
-			// config.GetValue("Config", "AttackTime");
+        public string FirstCharacterSpriteFrameSelection { get; set; }
+        public string SecondCharacterSpriteFrameSelection { get; set; }
 
-			Viewport root = GetTree().GetRoot();
-			CurrentScene = root.GetChild(root.GetChildCount() - 1);
-		}
+        public override void _Ready()
+        {
+            config = new ConfigFile();
+            config.Load("res://GameConfig.cfg");
+            // config.GetValue("Config", "AttackTime");
 
-		public void GotoScene(string path)
-		{
-			CallDeferred(nameof(DeferredGotoScene), path);
-		}
+            Viewport root = GetTree().GetRoot();
+            CurrentScene = root.GetChild(root.GetChildCount() - 1);
 
-		public void DeferredGotoScene(string path)
-		{
-			// Immediately free the current scene, there is no risk here.
-			CurrentScene.Free();
+            FirstCharacterSpriteFrameSelection = "mock";
+            SecondCharacterSpriteFrameSelection = "mock";
+        }
 
-			// Load a new scene.
-			var nextScene = (PackedScene)GD.Load(path);
+        public void GotoScene(string path)
+        {
+            CallDeferred(nameof(DeferredGotoScene), path);
+        }
 
-			// Instance the new scene.
-			CurrentScene = nextScene.Instance();
+        public void DeferredGotoScene(string path)
+        {
+            // Immediately free the current scene, there is no risk here.
+            CurrentScene.Free();
 
-			// Add it to the active scene, as child of root.
-			GetTree().GetRoot().AddChild(CurrentScene);
+            // Load a new scene.
+            var nextScene = (PackedScene)GD.Load(path);
 
-			// Optional, to make it compatible with the SceneTree.change_scene() API.
-			GetTree().SetCurrentScene(CurrentScene);
-		}
-	}
+            // Instance the new scene.
+            CurrentScene = nextScene.Instance();
+
+            // Add it to the active scene, as child of root.
+            GetTree().GetRoot().AddChild(CurrentScene);
+
+            // Optional, to make it compatible with the SceneTree.change_scene() API.
+            GetTree().SetCurrentScene(CurrentScene);
+        }
+    }
 }

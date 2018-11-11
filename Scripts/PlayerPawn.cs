@@ -32,6 +32,14 @@ namespace WFS
             healthMax = (int)Global.config.GetValue("Config", "InitHealth");
             healthCurrent = healthMax;
 
+	        actionToAnimation = new Dictionary<Action, string>();
+	        
+	        actionToAnimation[Action.NegativeSecond] = "Left";
+	        actionToAnimation[Action.NegativeFirst] = "Down";
+	        actionToAnimation[Action.Timeout] = "Idle";
+	        actionToAnimation[Action.PositiveFirst] = "Up";
+	        actionToAnimation[Action.PositiveSecond] = "Right";
+	        
 			movementState = Action.Timeout;
 			animatedSprite = (AnimatedSprite)GetNode("AnimatedSprite");
 			animatedSprite.FlipH = false;

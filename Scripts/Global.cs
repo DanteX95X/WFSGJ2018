@@ -26,6 +26,12 @@ namespace WFS
             SecondCharacterSpriteFrameSelection = "tryout";
         }
 
+        public override void _Process(float delta)
+        {
+            if(Input.IsActionJustReleased("ui_focus_prev"))
+                OS.SetWindowFullscreen(!OS.WindowFullscreen);
+        }
+
         public void GotoScene(string path)
         {
             CallDeferred(nameof(DeferredGotoScene), path);

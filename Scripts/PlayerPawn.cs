@@ -174,6 +174,11 @@ namespace WFS
             set { healthCurrent = value; }
         }
 
+		public float Timer
+		{
+			get { return timePassed; }
+		}
+
         bool IsInputAllowed()
         {
             return (controller.Attacker == this && controller.CurrentState is RecordActionsState) || (controller.Defender == this && controller.CurrentState is NegateActionsState);

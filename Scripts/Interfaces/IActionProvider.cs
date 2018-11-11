@@ -8,6 +8,7 @@ namespace WFS
 		Action ProvideAction();
 		bool IsPerformingAction { get; }
 		int Health { get; set; }
+		float Timer { get; }
 		void Reset();
 		BaseController controller { set; }
 		void Animate(Action action);

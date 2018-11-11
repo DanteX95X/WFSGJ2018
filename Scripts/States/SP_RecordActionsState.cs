@@ -8,6 +8,7 @@ namespace WFS
 			: base(controller, attacksCount)
 		{
 			GD.Print("Singleplayer");
+			controller.ResetFightLabel();
 		}
 
 		public override State Update(float delta)

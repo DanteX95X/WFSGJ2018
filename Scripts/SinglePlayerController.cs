@@ -1,3 +1,5 @@
+using Godot;
+
 namespace WFS
 {
 	public class SinglePlayerController : BaseController
@@ -21,6 +23,18 @@ namespace WFS
 			{
 				player.controller = this;
 			}
+			
+			fightLabel = (Label)GetNode("FightLabel");
+			fightLabelTimeMax = 1.0f;
+
+			defendLabel = (Label)GetNode("DefendLabel");
+			defendLabelTimeMax = 1.0f;
+
+			getReadyLabel = (Label) GetNode("GetReadyLabel");
+			getReadyLabelTimeMax = 1.0f;
+
+			koLabel = (Label) GetNode("KOLabel");
+			koLabelTimeMax = 1.0f;
 			
 			turn = 1;
 			

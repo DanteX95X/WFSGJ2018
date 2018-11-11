@@ -1,12 +1,12 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://NegativeShaderMaterial.material" type="Material" id=1]
 [ext_resource path="res://Textures/Biggies/P1010135.JPG" type="Texture" id=2]
-[ext_resource path="res://Scripts/GameController.cs" type="Script" id=3]
+[ext_resource path="res://Scripts/SinglePlayerController.cs" type="Script" id=3]
 [ext_resource path="res://Scenes/PlayerPawn.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/StarEffect.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scripts/UI/HealthBar.cs" type="Script" id=6]
-[ext_resource path="res://Scripts/UI/TimerBar.cs" type="Script" id=7]
+[ext_resource path="res://Scripts/SinglePlayerPawn.cs" type="Script" id=5]
+[ext_resource path="res://Scenes/StarEffect.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scripts/UI/HealthBar.cs" type="Script" id=7]
 [ext_resource path="res://Sound/276254__dynajinn__fight-voiceover-fight.wav" type="AudioStream" id=8]
 [ext_resource path="res://Sound/grunt.wav" type="AudioStream" id=9]
 [ext_resource path="res://Sound/whoosh.wav" type="AudioStream" id=10]
@@ -104,119 +104,7 @@ content_margin_left = -1.0
 content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
-bg_color = Color( 0.0391083, 0.34375, 0.0214844, 1 )
-draw_center = true
-border_width_left = 0
-border_width_top = 0
-border_width_right = 0
-border_width_bottom = 0
-border_color = Color( 0.8, 0.8, 0.8, 1 )
-border_blend = false
-corner_radius_top_left = 0
-corner_radius_top_right = 0
-corner_radius_bottom_right = 0
-corner_radius_bottom_left = 0
-corner_detail = 8
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-shadow_color = Color( 0, 0, 0, 0.6 )
-shadow_size = 0
-anti_aliasing = true
-anti_aliasing_size = 1
-
-[sub_resource type="StyleBoxFlat" id=11]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-bg_color = Color( 0.00784314, 0.333333, 0.0196078, 1 )
-draw_center = true
-border_width_left = 0
-border_width_top = 0
-border_width_right = 0
-border_width_bottom = 0
-border_color = Color( 0.8, 0.8, 0.8, 1 )
-border_blend = false
-corner_radius_top_left = 0
-corner_radius_top_right = 0
-corner_radius_bottom_right = 0
-corner_radius_bottom_left = 0
-corner_detail = 8
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-shadow_color = Color( 0, 0, 0, 0.6 )
-shadow_size = 0
-anti_aliasing = true
-anti_aliasing_size = 1
-
-[sub_resource type="StyleBoxFlat" id=12]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-bg_color = Color( 0.6, 0.6, 0.6, 1 )
-draw_center = true
-border_width_left = 0
-border_width_top = 0
-border_width_right = 0
-border_width_bottom = 0
-border_color = Color( 0.8, 0.8, 0.8, 1 )
-border_blend = false
-corner_radius_top_left = 0
-corner_radius_top_right = 0
-corner_radius_bottom_right = 0
-corner_radius_bottom_left = 0
-corner_detail = 8
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-shadow_color = Color( 0, 0, 0, 0.6 )
-shadow_size = 0
-anti_aliasing = true
-anti_aliasing_size = 1
-
-[sub_resource type="StyleBoxFlat" id=9]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-bg_color = Color( 0.00784314, 0.333333, 0.0196078, 1 )
-draw_center = true
-border_width_left = 0
-border_width_top = 0
-border_width_right = 0
-border_width_bottom = 0
-border_color = Color( 0.8, 0.8, 0.8, 1 )
-border_blend = false
-corner_radius_top_left = 0
-corner_radius_top_right = 0
-corner_radius_bottom_right = 0
-corner_radius_bottom_left = 0
-corner_detail = 8
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-shadow_color = Color( 0, 0, 0, 0.6 )
-shadow_size = 0
-anti_aliasing = true
-anti_aliasing_size = 1
-
-[sub_resource type="StyleBoxFlat" id=10]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-bg_color = Color( 0.6, 0.6, 0.6, 1 )
+bg_color = Color( 0.566406, 0.042038, 0.042038, 1 )
 draw_center = true
 border_width_left = 0
 border_width_top = 0
@@ -264,7 +152,7 @@ use_filter = true
 font_data = SubResource( 7 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Root" type="Node" index="0"]
+[node name="Root" type="Node"]
 
 [node name="Background" type="TextureRect" parent="." index="0"]
 
@@ -294,9 +182,10 @@ _sections_unfolded = [ "Pause" ]
 [node name="Player1" parent="Background/GameController" index="0" instance=ExtResource( 4 )]
 
 position = Vector2( 325.709, 276.719 )
+script = ExtResource( 5 )
 second = true
 
-[node name="Blood" parent="Background/GameController/Player1" index="3" instance=ExtResource( 5 )]
+[node name="Blood" parent="Background/GameController/Player1" index="3" instance=ExtResource( 6 )]
 
 position = Vector2( -3.79205, 178.442 )
 rotation = 3.13774
@@ -355,44 +244,14 @@ value = 0.0
 exp_edit = false
 rounded = false
 percent_visible = false
-script = ExtResource( 6 )
-_sections_unfolded = [ "Percent", "Visibility", "custom_styles" ]
-
-[node name="TimerBar" type="ProgressBar" parent="Background/GameController/Player1" index="7"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 0.0
-margin_left = -300.0
-margin_top = 300.0
-margin_right = 36.0
-margin_bottom = 335.0
-rect_rotation = -90.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 0
-custom_styles/fg = SubResource( 11 )
-custom_styles/bg = SubResource( 12 )
-min_value = 0.0
-max_value = 1.0
-step = 1.0
-page = 0.0
-value = 0.0
-exp_edit = false
-rounded = false
-percent_visible = false
 script = ExtResource( 7 )
-_sections_unfolded = [ "Grow Direction", "Rect", "Visibility", "custom_fonts", "custom_styles" ]
+_sections_unfolded = [ "Percent", "Visibility", "custom_styles" ]
 
 [node name="Player2" parent="Background/GameController" index="1" instance=ExtResource( 4 )]
 
 position = Vector2( 708.235, 275.855 )
 
-[node name="Blood" parent="Background/GameController/Player2" index="3" instance=ExtResource( 5 )]
+[node name="Blood" parent="Background/GameController/Player2" index="3" instance=ExtResource( 6 )]
 
 position = Vector2( -1.6665, 174.525 )
 
@@ -451,38 +310,8 @@ value = 0.0
 exp_edit = false
 rounded = false
 percent_visible = false
-script = ExtResource( 6 )
-_sections_unfolded = [ "Percent", "Rect", "Visibility", "custom_styles" ]
-
-[node name="TimerBar" type="ProgressBar" parent="Background/GameController/Player2" index="7"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 0.0
-margin_left = 250.0
-margin_top = 300.0
-margin_right = 586.0
-margin_bottom = 335.0
-rect_rotation = -90.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 0
-custom_styles/fg = SubResource( 9 )
-custom_styles/bg = SubResource( 10 )
-min_value = 0.0
-max_value = 1.0
-step = 1.0
-page = 0.0
-value = 0.0
-exp_edit = false
-rounded = false
-percent_visible = false
 script = ExtResource( 7 )
-_sections_unfolded = [ "Grow Direction", "Rect", "Visibility", "custom_fonts", "custom_styles" ]
+_sections_unfolded = [ "Percent", "Rect", "Visibility", "custom_styles" ]
 
 [node name="FightLabel" type="Label" parent="Background/GameController" index="2"]
 
@@ -581,8 +410,6 @@ max_lines_visible = -1
 _sections_unfolded = [ "Rect", "Visibility", "custom_fonts" ]
 
 [node name="Sounds" type="Node" parent="Background/GameController" index="6"]
-
-editor/display_folded = true
 
 [node name="FightSound" type="AudioStreamPlayer" parent="Background/GameController/Sounds" index="0"]
 

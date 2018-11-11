@@ -42,7 +42,7 @@ namespace WFS
 	        
 			movementState = Action.Timeout;
 			animatedSprite = (AnimatedSprite)GetNode("AnimatedSprite");
-			animatedSprite.FlipH = false;
+			animatedSprite.FlipH = second;
 			animatedSprite.FlipV = false;
 			animatedSprite.Play();
 			

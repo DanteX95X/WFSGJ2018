@@ -51,7 +51,6 @@ second = true
 
 position = Vector2( -3.79205, 178.442 )
 rotation = 3.13774
-scale = Vector2( 1, 1 )
 
 [node name="Player2" parent="GameController" index="1" instance=ExtResource( 2 )]
 

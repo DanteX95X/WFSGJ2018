@@ -8,6 +8,8 @@ namespace WFS
 
 		private float transitionTime;
 		private float elapsedTime = 0.0f;
+		
+		private bool canChangeState;
 
 		static int sign = 1;
 		static bool isSignInit = false;
@@ -16,6 +18,8 @@ namespace WFS
 
 		public PreRecordState(BaseController controller, int attacksCount)
 		{
+			canChangeState = false;
+			
 			transitionTime = (float)Global.config.GetValue("Config", "TransitionTime");
 			if (!isSignInit)
 			{
@@ -42,19 +46,28 @@ namespace WFS
 		
 		public override State Update(float delta)
 		{
-			elapsedTime += delta;
-			float suwaczekValue = 0.0f;
-			if (sign == 1)
-				suwaczekValue = sign * (elapsedTime / transitionTime);
-			else if (sign == -1)
-				suwaczekValue = 1 + sign * (elapsedTime / transitionTime);
+			if (!canChangeState)
+			{
+				elapsedTime += delta;
+				float suwaczekValue = 0.0f;
+				if (sign == 1)
+					suwaczekValue = sign * (elapsedTime / transitionTime);
+				else if (sign == -1)
+					suwaczekValue = 1 + sign * (elapsedTime / transitionTime);
 
-			material?.SetShaderParam("suwaczek", suwaczekValue);
+				material?.SetShaderParam("suwaczek", suwaczekValue);
 
-			if (elapsedTime >= transitionTime)
-				return state;
+				if (elapsedTime >= transitionTime)
+					canChangeState = true;
+			}
 			else
-				return this;
+			{
+				if (Input.IsActionJustReleased("ui_accept"))
+					return state;
+			}
+			
+			return this;
+				
 		}
 	}
 }

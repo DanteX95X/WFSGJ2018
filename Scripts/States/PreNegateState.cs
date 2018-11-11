@@ -11,8 +11,6 @@ namespace WFS
 		private float transitionTime;
 		private float elapsedTime = 0.0f;
 
-		private bool canChangeState;
-
 		static int sign = 1;
 		static bool isSignInit = false;
         private BaseController controller;
@@ -21,7 +19,6 @@ namespace WFS
 		{
 			transitionTime = (float)Global.config.GetValue("Config", "TransitionTime");
 			negateState = new NegateActionsState(controller, actions);
-			canChangeState = false;
 			GD.Print("Transition to negate attacks");
 			controller.Attacker.Animate(Action.Timeout);
 			controller.Defender.Animate(Action.Timeout);
@@ -30,26 +27,14 @@ namespace WFS
 		
 		public override State Update(float delta)
 		{
-			if (!canChangeState)
+			elapsedTime += delta;
+			if (elapsedTime >= transitionTime)
 			{
-				elapsedTime += delta;
-				if (elapsedTime >= transitionTime)
-				{
-					canChangeState = true;
-				}
+				controller.ResetDefendLabel();
+				GD.Print("Negating attacks");
+				return negateState;
 			}
-			else
-			{
-				if (Input.IsActionJustReleased("ui_accept"))
-				{
-                    controller.ResetDefendLabel();
-					GD.Print("Negating attacks");
-					return negateState;
-				}
-				
-				return this;
-			}
-
+			
 			return this;
 		}
 	}

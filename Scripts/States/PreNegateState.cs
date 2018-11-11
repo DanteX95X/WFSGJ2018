@@ -16,6 +16,8 @@ namespace WFS
 		static int sign = 1;
 		static bool isSignInit = false;
         private BaseController controller;
+		
+		private AudioStreamPlayer getReadySound;
 
 		public PreNegateState(BaseController controller, List<Action> actions)
 		{	
@@ -28,6 +30,9 @@ namespace WFS
             this.controller = controller;
 			
 			controller.ResetGetReadyLabel();
+			
+			getReadySound = (AudioStreamPlayer)controller.GetNode("Sounds").GetNode("GetReadySound");
+			getReadySound.Play();
 		}
 		
 		public override State Update(float delta)

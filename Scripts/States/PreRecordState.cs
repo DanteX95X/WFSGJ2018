@@ -18,6 +18,8 @@ namespace WFS
 
 		private BaseController controller;
 
+		private AudioStreamPlayer getReadySound;
+
 		public PreRecordState(BaseController controller, int attacksCount)
 		{
 			this.controller = controller;
@@ -44,6 +46,9 @@ namespace WFS
 			
 			controller.Attacker.Animate(Action.Timeout);
 			controller.Defender.Animate(Action.Timeout);
+			
+			getReadySound = (AudioStreamPlayer)controller.GetNode("Sounds").GetNode("GetReadySound");
+			getReadySound.Play();
 		}
 		
 		public override State Update(float delta)

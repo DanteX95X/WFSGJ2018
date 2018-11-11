@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Textures/Biggies/P1010087.JPG" type="Texture" id=1]
 [ext_resource path="res://Scripts/UI/MainMenuButton.cs" type="Script" id=2]
 
-[node name="Node" type="Node" index="0"]
+[node name="Node" type="Node"]
 
 [node name="TextureRect" type="TextureRect" parent="." index="0"]
 
@@ -11,10 +11,11 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 367.0
-margin_top = 163.0
-margin_right = 683.0
-margin_bottom = 429.0
+margin_left = -11.0
+margin_top = -54.0
+margin_right = 3061.0
+margin_bottom = 2250.0
+rect_scale = Vector2( 0.34, 0.34 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -22,32 +23,10 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 texture = ExtResource( 1 )
-expand = true
 stretch_mode = 0
+_sections_unfolded = [ "Rect" ]
 
-[node name="Label" type="Label" parent="." index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 367.0
-margin_top = 103.0
-margin_right = 614.0
-margin_bottom = 154.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-text = "Main Menu"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Size Flags" ]
-
-[node name="SinglePlayerButton" type="Button" parent="." index="2"]
+[node name="SinglePlayerButton" type="Button" parent="." index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -73,7 +52,7 @@ flat = false
 align = 1
 script = ExtResource( 2 )
 
-[node name="MultiPlayerButton" type="Button" parent="." index="3"]
+[node name="MultiPlayerButton" type="Button" parent="." index="2"]
 
 anchor_left = 0.0
 anchor_top = 0.0

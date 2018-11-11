@@ -11,11 +11,12 @@ namespace WFS
 
 		protected Action movementState;
 		private AnimatedSprite animatedSprite;
-        private Particles2D starEffect;
+		private AnimatedSprite prompt;
+		private AnimationPlayer animationPlayer;
 		private int healthCurrent;
 		private int healthMax;
 
-		private float timer = 1;
+		private float timer = 2;
 		private float timePassed = 0;
 
 		private bool isAnimating = false;
@@ -40,14 +41,18 @@ namespace WFS
 
 			movementState = Action.Timeout;
 			animatedSprite = (AnimatedSprite)GetNode("AnimatedSprite");
-            starEffect = (Particles2D)GetNode("StarEffect");
-
 			animatedSprite.FlipH = false;
 			animatedSprite.FlipV = false;
-
+			animatedSprite.Play();
+			
+			prompt = (AnimatedSprite) GetNode("Prompt");
+			prompt.FlipH = false;
+			prompt.FlipV = false;
 			animatedSprite.Play();
 
 			Blood = (Particles2D)GetNode("Blood");
+
+			animationPlayer = (AnimationPlayer) GetNode("animation");
 		}
 
 		public override void _Process(float delta)
@@ -116,11 +121,17 @@ namespace WFS
 			{
 				movementState = Action.NegativeFirst;
 			}
+
+			if (controller.CurrentState is RecordActionsState && controller.Attacker == this)
+			{
+				animationPlayer.Play("movement");
+			}
 		}
 
 		public void SetAnimation(string animationStr)
 		{
 			animatedSprite.Animation = animationStr;
+			prompt.Animation = animationStr;
 		}
 
 		public void Reset()

@@ -48,7 +48,7 @@ second = true
 
 [node name="Blood" parent="GameController/Player1" index="3" instance=ExtResource( 3 )]
 
-position = Vector2( -2.43167, -9.29001 )
+position = Vector2( -3.79205, 178.442 )
 rotation = 3.13774
 scale = Vector2( 1, 1 )
 
@@ -58,7 +58,7 @@ position = Vector2( 736.025, 263.359 )
 
 [node name="Blood" parent="GameController/Player2" index="3" instance=ExtResource( 3 )]
 
-position = Vector2( 2.41455, -7.76495 )
+position = Vector2( -1.6665, 174.525 )
 
 [node name="FightLabel" type="Label" parent="GameController" index="2"]
 

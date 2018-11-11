@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/GameController.cs" type="Script" id=1]
 [ext_resource path="res://Scenes/PlayerPawn.tscn" type="PackedScene" id=2]
@@ -9,7 +9,33 @@
 [ext_resource path="res://Sound/ko.wav" type="AudioStream" id=7]
 [ext_resource path="res://Sound/bgm.wav" type="AudioStream" id=8]
 
-[node name="Root" type="Node"]
+[sub_resource type="DynamicFontData" id=1]
+
+hinting = 1
+font_path = "res://Fonts/Bombing.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+
+size = 150
+use_mipmaps = false
+use_filter = false
+font_data = SubResource( 1 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFontData" id=3]
+
+hinting = 2
+font_path = "res://Fonts/Bombing.ttf"
+
+[sub_resource type="DynamicFont" id=4]
+
+size = 150
+use_mipmaps = false
+use_filter = false
+font_data = SubResource( 3 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[node name="Root" type="Node" index="0"]
 
 [node name="GameController" type="Node" parent="." index="0"]
 
@@ -41,23 +67,22 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 355.0
-margin_top = 82.0
-margin_right = 395.0
-margin_bottom = 96.0
-rect_rotation = -12.27
-rect_scale = Vector2( 10, 10 )
+margin_left = 387.0
+margin_top = 67.0
+margin_right = 641.0
+margin_bottom = 218.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
+custom_fonts/font = SubResource( 2 )
 text = "Fight"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Rect", "Visibility" ]
+_sections_unfolded = [ "Material", "Rect", "Visibility", "custom_fonts" ]
 
 [node name="DefendLabel" type="Label" parent="GameController" index="3"]
 
@@ -66,23 +91,22 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 355.0
-margin_top = 82.0
-margin_right = 401.0
-margin_bottom = 96.0
-rect_rotation = -12.27
-rect_scale = Vector2( 10, 10 )
+margin_left = 351.0
+margin_top = 70.0
+margin_right = 684.0
+margin_bottom = 221.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
+custom_fonts/font = SubResource( 4 )
 text = "Defend"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Rect", "Visibility" ]
+_sections_unfolded = [ "Rect", "Visibility", "custom_fonts" ]
 
 [node name="Sounds" type="Node" parent="GameController" index="4"]
 

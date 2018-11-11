@@ -47,6 +47,10 @@ _sections_unfolded = [ "Pause" ]
 
 second = true
 
+[node name="AnimatedSprite" parent="GameController/Player1" index="2"]
+
+_sections_unfolded = [ "Material", "Pause" ]
+
 [node name="Blood" parent="GameController/Player1" index="3" instance=ExtResource( 3 )]
 
 position = Vector2( -3.79205, 178.442 )

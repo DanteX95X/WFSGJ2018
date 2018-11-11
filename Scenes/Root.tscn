@@ -36,7 +36,7 @@ use_filter = false
 font_data = SubResource( 3 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Root" type="Node"]
+[node name="Root" type="Node" index="0"]
 
 [node name="GameController" type="Node" parent="." index="0"]
 
@@ -47,7 +47,7 @@ _sections_unfolded = [ "Pause" ]
 
 second = true
 
-[node name="AnimatedSprite" parent="GameController/Player1" index="2"]
+[node name="AnimatedSprite" parent="GameController/Player1" index="1"]
 
 _sections_unfolded = [ "Material", "Pause" ]
 
@@ -198,6 +198,15 @@ process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = false
+
+[node name="shake" type="AnimationPlayer" parent="GameController" index="7"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+blend_times = [  ]
 
 
 [editable path="GameController/Player1"]

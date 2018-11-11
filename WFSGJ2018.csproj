@@ -63,6 +63,7 @@
     <Compile Include="Scripts\Interfaces\IActionProvider.cs" />
     <Compile Include="Scripts\SinglePlayerController.cs" />
     <Compile Include="Scripts\SinglePlayerPawn.cs" />
+    <Compile Include="Scripts\States\DeathState.cs" />
     <Compile Include="Scripts\States\NegateActionsState.cs" />
     <Compile Include="Scripts\States\PreNegateState.cs" />
     <Compile Include="Scripts\States\PreRecordState.cs" />

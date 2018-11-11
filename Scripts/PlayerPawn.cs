@@ -12,7 +12,7 @@ namespace WFS
         protected Action movementState;
         private AnimatedSprite animatedSprite;
         private AnimatedSprite prompt;
-        private AnimationPlayer animationPlayer;
+        protected AnimationPlayer animationPlayer;
         private int healthCurrent;
         private int healthMax;
 
@@ -134,7 +134,7 @@ namespace WFS
                 movementState = Action.NegativeFirst;
             }
 
-            if (controller.CurrentState is RecordActionsState && controller.Attacker == this)
+            if (IsInputAllowed())//controller.CurrentState is RecordActionsState && controller.Attacker == this)
             {
                 animationPlayer.Play("movement");
             }
@@ -143,6 +143,10 @@ namespace WFS
         public void SetAnimation(string animationStr)
         {
             animatedSprite.Animation = animationStr;
+            if (animationStr == "Idle")
+            {
+                animationStr = "None";
+            }
             prompt.Animation = animationStr;
         }
 
@@ -170,7 +174,7 @@ namespace WFS
             set { healthCurrent = value; }
         }
 
-        bool IsInputAllowed()
+        protected bool IsInputAllowed()
         {
             return (controller.Attacker == this && controller.CurrentState is RecordActionsState) || (controller.Defender == this && controller.CurrentState is NegateActionsState);
         }

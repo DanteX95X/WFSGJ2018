@@ -30,7 +30,7 @@ namespace WFS
 //             }
             foreach (var node in GetChildren())
             {
-                if (node != null)
+                if (node != null && node is CharacterChoice)
                     characterChoices.Add((CharacterChoice)node);
             }
         }
@@ -82,5 +82,21 @@ namespace WFS
                 global.GotoScene("res://Scenes/Root.tscn");
             }
         }
+		
+		private void _on_Button_button_up()
+		{
+			characterChoices[playerOneIndex].ConfirmChoice(PlayerChoice.One);
+			characterChoices[playerTwoIndex].ConfirmChoice(PlayerChoice.Two);
+			playerTwoLock = true;
+			playerOneLock = true;
+			
+			if (playerOneLock && (playerTwoLock || singlePlayerMode))
+			{
+				WFS.Global global = (WFS.Global)GetNode("/root/Global");
+				global.FirstCharacterSpriteFrameSelection = characterChoices[playerOneIndex].name;
+				global.SecondCharacterSpriteFrameSelection = characterChoices[playerTwoIndex].name;
+				global.GotoScene("res://Scenes/Root.tscn");
+			}
+		}
     }
 }

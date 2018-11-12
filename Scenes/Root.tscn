@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://NegativeShaderMaterial.material" type="Material" id=1]
 [ext_resource path="res://Textures/Biggies/P1010135.JPG" type="Texture" id=2]
@@ -7,12 +7,13 @@
 [ext_resource path="res://Scenes/StarEffect.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scripts/UI/HealthBar.cs" type="Script" id=6]
 [ext_resource path="res://Scripts/UI/TimerBar.cs" type="Script" id=7]
-[ext_resource path="res://Sound/276254__dynajinn__fight-voiceover-fight.wav" type="AudioStream" id=8]
-[ext_resource path="res://Sound/grunt.wav" type="AudioStream" id=9]
-[ext_resource path="res://Sound/whoosh.wav" type="AudioStream" id=10]
-[ext_resource path="res://Sound/ko.wav" type="AudioStream" id=11]
-[ext_resource path="res://Sound/bgm.wav" type="AudioStream" id=12]
-[ext_resource path="res://Sound/get_ready.wav" type="AudioStream" id=13]
+[ext_resource path="res://Fonts/WorkingFont.tres" type="DynamicFont" id=8]
+[ext_resource path="res://Sound/276254__dynajinn__fight-voiceover-fight.wav" type="AudioStream" id=9]
+[ext_resource path="res://Sound/grunt.wav" type="AudioStream" id=10]
+[ext_resource path="res://Sound/whoosh.wav" type="AudioStream" id=11]
+[ext_resource path="res://Sound/ko.wav" type="AudioStream" id=12]
+[ext_resource path="res://Sound/bgm.wav" type="AudioStream" id=13]
+[ext_resource path="res://Sound/get_ready.wav" type="AudioStream" id=14]
 
 [sub_resource type="StyleBoxFlat" id=1]
 
@@ -244,31 +245,18 @@ _sections_unfolded = [ "Border", "Border Width" ]
 
 [sub_resource type="DynamicFontData" id=9]
 
-hinting = 1
+hinting = 2
 font_path = "res://Fonts/Bombing.ttf"
 
 [sub_resource type="DynamicFont" id=10]
 
 size = 150
 use_mipmaps = false
-use_filter = false
+use_filter = true
 font_data = SubResource( 9 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="DynamicFontData" id=11]
-
-hinting = 2
-font_path = "res://Fonts/Bombing.ttf"
-
-[sub_resource type="DynamicFont" id=12]
-
-size = 150
-use_mipmaps = false
-use_filter = true
-font_data = SubResource( 11 )
-_sections_unfolded = [ "Font", "Settings" ]
-
-[node name="Root" type="Node" index="0"]
+[node name="Root" type="Node"]
 
 [node name="Background" type="TextureRect" parent="." index="0"]
 
@@ -505,8 +493,8 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 10 )
-custom_colors/font_color = Color( 0.128906, 0, 0.0241699, 1 )
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.662745, 1, 0, 1 )
 text = "Fight!"
 percent_visible = 1.0
 lines_skipped = 0
@@ -530,8 +518,8 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 10 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.662745, 1, 0, 1 )
 text = "Get Ready!"
 percent_visible = 1.0
 lines_skipped = 0
@@ -555,8 +543,8 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 12 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0.662745, 1, 0, 1 )
 text = "Defend!"
 percent_visible = 1.0
 lines_skipped = 0
@@ -580,8 +568,8 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 12 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0.662745, 1, 0, 1 )
 text = "K.O.!"
 percent_visible = 1.0
 lines_skipped = 0
@@ -594,7 +582,7 @@ editor/display_folded = true
 
 [node name="FightSound" type="AudioStreamPlayer" parent="Background/GameController/Sounds" index="0"]
 
-stream = ExtResource( 8 )
+stream = ExtResource( 9 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
@@ -603,7 +591,7 @@ bus = "Master"
 
 [node name="GruntSound" type="AudioStreamPlayer" parent="Background/GameController/Sounds" index="1"]
 
-stream = ExtResource( 9 )
+stream = ExtResource( 10 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
@@ -612,7 +600,7 @@ bus = "Master"
 
 [node name="EvadeSound" type="AudioStreamPlayer" parent="Background/GameController/Sounds" index="2"]
 
-stream = ExtResource( 10 )
+stream = ExtResource( 11 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
@@ -621,7 +609,7 @@ bus = "Master"
 
 [node name="KOSound" type="AudioStreamPlayer" parent="Background/GameController/Sounds" index="3"]
 
-stream = ExtResource( 11 )
+stream = ExtResource( 12 )
 volume_db = 5.0
 pitch_scale = 1.0
 autoplay = false
@@ -630,7 +618,7 @@ bus = "Master"
 
 [node name="BGM" type="AudioStreamPlayer" parent="Background/GameController/Sounds" index="4"]
 
-stream = ExtResource( 12 )
+stream = ExtResource( 13 )
 volume_db = -5.0
 pitch_scale = 1.0
 autoplay = true
@@ -639,7 +627,7 @@ bus = "Master"
 
 [node name="GetReadySound" type="AudioStreamPlayer" parent="Background/GameController/Sounds" index="5"]
 
-stream = ExtResource( 13 )
+stream = ExtResource( 14 )
 volume_db = 1.5
 pitch_scale = 1.0
 autoplay = false

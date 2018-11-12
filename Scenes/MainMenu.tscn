@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Textures/Biggies/P1010087.JPG" type="Texture" id=1]
 [ext_resource path="res://Scripts/UI/MainMenuButton.cs" type="Script" id=2]
+[ext_resource path="res://Fonts/WorkingFont.tres" type="DynamicFont" id=3]
 
 [node name="Node" type="Node"]
 
@@ -32,10 +33,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 173.0
-margin_top = 453.0
-margin_right = 397.0
-margin_bottom = 504.0
+margin_left = 172.0
+margin_top = 434.0
+margin_right = 396.0
+margin_bottom = 485.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -58,10 +59,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 606.0
-margin_top = 450.0
-margin_right = 830.0
-margin_bottom = 501.0
+margin_left = 615.0
+margin_top = 433.0
+margin_right = 839.0
+margin_bottom = 484.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -78,8 +79,89 @@ flat = false
 align = 1
 script = ExtResource( 2 )
 
+[node name="CreditsButton" type="Button" parent="." index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 390.0
+margin_top = 486.0
+margin_right = 620.0
+margin_bottom = 538.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Credits"
+flat = false
+align = 1
+script = ExtResource( 2 )
+
+[node name="QuitButton" type="Button" parent="." index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 390.0
+margin_top = 543.0
+margin_right = 620.0
+margin_bottom = 595.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Quit"
+flat = false
+align = 1
+script = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="." index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 133.0
+margin_top = 2.0
+margin_right = 896.0
+margin_bottom = 153.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.662745, 1, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Kulfon Fighters"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
 [connection signal="button_up" from="SinglePlayerButton" to="MultiPlayerButton" method="_on_SinglePlayerButton_button_up"]
 
 [connection signal="button_up" from="MultiPlayerButton" to="MultiPlayerButton" method="_on_MultiPlayerButton_button_up"]
+
+[connection signal="button_up" from="CreditsButton" to="CreditsButton" method="_on_CreditsButton_button_up"]
+
+[connection signal="button_up" from="QuitButton" to="QuitButton" method="_on_QuitButton_button_up"]
 
 

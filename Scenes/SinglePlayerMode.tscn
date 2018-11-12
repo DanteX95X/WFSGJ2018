@@ -269,7 +269,7 @@ use_filter = true
 font_data = SubResource( 11 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Root" type="Node" index="0"]
+[node name="Root" type="Node"]
 
 [node name="Background" type="TextureRect" parent="." index="0"]
 
@@ -508,7 +508,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 10 )
-custom_colors/font_color = Color( 0.128906, 0, 0.0241699, 1 )
+custom_colors/font_color = Color( 0.662745, 1, 0, 1 )
 text = "Fight!"
 percent_visible = 1.0
 lines_skipped = 0
@@ -533,7 +533,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 10 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.662745, 1, 0, 1 )
 text = "Get Ready!"
 percent_visible = 1.0
 lines_skipped = 0
@@ -558,7 +558,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 12 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.662745, 1, 0, 1 )
 text = "Defend!"
 percent_visible = 1.0
 lines_skipped = 0
@@ -583,7 +583,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 12 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.662745, 1, 0, 1 )
 text = "K.O.!"
 percent_visible = 1.0
 lines_skipped = 0

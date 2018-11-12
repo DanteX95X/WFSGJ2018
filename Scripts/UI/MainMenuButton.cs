@@ -14,6 +14,6 @@ public class MainMenuButton : Button
 	{
 		WFS.Global global = (WFS.Global)GetNode("/root/Global");
 		global.singlePlayer = true;
-		global.GotoScene("res://Scenes/Credits.tscn");
+		global.GotoScene("res://Scenes/AnimationSingle.tscn");
 	}
 }

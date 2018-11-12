@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://NegativeShaderMaterial.material" type="Material" id=1]
 [ext_resource path="res://Textures/Biggies/P1010135.JPG" type="Texture" id=2]
@@ -7,12 +7,13 @@
 [ext_resource path="res://Scripts/SinglePlayerPawn.cs" type="Script" id=5]
 [ext_resource path="res://Scenes/StarEffect.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scripts/UI/HealthBar.cs" type="Script" id=7]
-[ext_resource path="res://Sound/276254__dynajinn__fight-voiceover-fight.wav" type="AudioStream" id=8]
-[ext_resource path="res://Sound/grunt.wav" type="AudioStream" id=9]
-[ext_resource path="res://Sound/whoosh.wav" type="AudioStream" id=10]
-[ext_resource path="res://Sound/ko.wav" type="AudioStream" id=11]
-[ext_resource path="res://Sound/bgm.wav" type="AudioStream" id=12]
-[ext_resource path="res://Sound/get_ready.wav" type="AudioStream" id=13]
+[ext_resource path="res://Scripts/UI/TimerBar.cs" type="Script" id=8]
+[ext_resource path="res://Sound/276254__dynajinn__fight-voiceover-fight.wav" type="AudioStream" id=9]
+[ext_resource path="res://Sound/grunt.wav" type="AudioStream" id=10]
+[ext_resource path="res://Sound/whoosh.wav" type="AudioStream" id=11]
+[ext_resource path="res://Sound/ko.wav" type="AudioStream" id=12]
+[ext_resource path="res://Sound/bgm.wav" type="AudioStream" id=13]
+[ext_resource path="res://Sound/get_ready.wav" type="AudioStream" id=14]
 
 [sub_resource type="StyleBoxFlat" id=1]
 
@@ -104,7 +105,7 @@ content_margin_left = -1.0
 content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
-bg_color = Color( 0.566406, 0.042038, 0.042038, 1 )
+bg_color = Color( 0.40625, 0.0395241, 0.00158691, 1 )
 draw_center = true
 border_width_left = 0
 border_width_top = 0
@@ -126,33 +127,149 @@ shadow_size = 0
 anti_aliasing = true
 anti_aliasing_size = 1
 
-[sub_resource type="DynamicFontData" id=5]
+[sub_resource type="StyleBoxFlat" id=5]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0.00784314, 0.333333, 0.0196078, 1 )
+draw_center = true
+border_width_left = 2
+border_width_top = 1
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+border_blend = false
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+_sections_unfolded = [ "Border", "Border Width" ]
+
+[sub_resource type="StyleBoxFlat" id=6]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0.6, 0.6, 0.6, 1 )
+draw_center = true
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+border_blend = false
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+_sections_unfolded = [ "Border", "Border Width" ]
+
+[sub_resource type="StyleBoxFlat" id=7]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0.00784314, 0.333333, 0.0196078, 1 )
+draw_center = true
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+border_blend = false
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+_sections_unfolded = [ "Border", "Border Width" ]
+
+[sub_resource type="StyleBoxFlat" id=8]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0.6, 0.6, 0.6, 1 )
+draw_center = true
+border_width_left = 2
+border_width_top = 1
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+border_blend = false
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+_sections_unfolded = [ "Border", "Border Width" ]
+
+[sub_resource type="DynamicFontData" id=9]
 
 hinting = 1
 font_path = "res://Fonts/Bombing.ttf"
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=10]
 
 size = 150
 use_mipmaps = false
 use_filter = false
-font_data = SubResource( 5 )
+font_data = SubResource( 9 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="DynamicFontData" id=7]
+[sub_resource type="DynamicFontData" id=11]
 
 hinting = 2
 font_path = "res://Fonts/Bombing.ttf"
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=12]
 
 size = 150
 use_mipmaps = false
 use_filter = true
-font_data = SubResource( 7 )
+font_data = SubResource( 11 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Root" type="Node"]
+[node name="Root" type="Node" index="0"]
 
 [node name="Background" type="TextureRect" parent="." index="0"]
 
@@ -247,6 +364,36 @@ percent_visible = false
 script = ExtResource( 7 )
 _sections_unfolded = [ "Percent", "Visibility", "custom_styles" ]
 
+[node name="TimerBar" type="ProgressBar" parent="Background/GameController/Player1" index="7"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_left = -300.0
+margin_top = 300.0
+margin_right = 36.0
+margin_bottom = 335.0
+rect_rotation = -90.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+custom_styles/fg = SubResource( 5 )
+custom_styles/bg = SubResource( 6 )
+min_value = 0.0
+max_value = 1.0
+step = 1.0
+page = 0.0
+value = 0.0
+exp_edit = false
+rounded = false
+percent_visible = false
+script = ExtResource( 8 )
+_sections_unfolded = [ "Grow Direction", "Rect", "Visibility", "custom_fonts", "custom_styles" ]
+
 [node name="Player2" parent="Background/GameController" index="1" instance=ExtResource( 4 )]
 
 position = Vector2( 708.235, 275.855 )
@@ -313,6 +460,36 @@ percent_visible = false
 script = ExtResource( 7 )
 _sections_unfolded = [ "Percent", "Rect", "Visibility", "custom_styles" ]
 
+[node name="TimerBar" type="ProgressBar" parent="Background/GameController/Player2" index="7"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_left = 250.0
+margin_top = 300.0
+margin_right = 586.0
+margin_bottom = 335.0
+rect_rotation = -90.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+custom_styles/fg = SubResource( 7 )
+custom_styles/bg = SubResource( 8 )
+min_value = 0.0
+max_value = 1.0
+step = 1.0
+page = 0.0
+value = 0.0
+exp_edit = false
+rounded = false
+percent_visible = false
+script = ExtResource( 8 )
+_sections_unfolded = [ "Grow Direction", "Rect", "Visibility", "custom_fonts", "custom_styles" ]
+
 [node name="FightLabel" type="Label" parent="Background/GameController" index="2"]
 
 visible = false
@@ -330,12 +507,13 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0.128906, 0, 0.0241699, 1 )
 text = "Fight!"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Material", "Rect", "Visibility", "custom_fonts" ]
+_sections_unfolded = [ "Material", "Rect", "Visibility", "custom_colors", "custom_fonts" ]
 
 [node name="GetReadyLabel" type="Label" parent="Background/GameController" index="3"]
 
@@ -354,12 +532,13 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Get Ready!"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Material", "Rect", "Visibility", "custom_fonts" ]
+_sections_unfolded = [ "Material", "Rect", "Visibility", "custom_colors", "custom_fonts" ]
 
 [node name="DefendLabel" type="Label" parent="Background/GameController" index="4"]
 
@@ -378,12 +557,13 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Defend!"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Rect", "Visibility", "custom_fonts" ]
+_sections_unfolded = [ "Rect", "Visibility", "custom_colors", "custom_fonts" ]
 
 [node name="KOLabel" type="Label" parent="Background/GameController" index="5"]
 
@@ -402,25 +582,19 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "K.O.!"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Rect", "Visibility", "custom_fonts" ]
+_sections_unfolded = [ "Rect", "Visibility", "custom_colors", "custom_fonts" ]
 
 [node name="Sounds" type="Node" parent="Background/GameController" index="6"]
 
+editor/display_folded = true
+
 [node name="FightSound" type="AudioStreamPlayer" parent="Background/GameController/Sounds" index="0"]
-
-stream = ExtResource( 8 )
-volume_db = 0.0
-pitch_scale = 1.0
-autoplay = false
-mix_target = 0
-bus = "Master"
-
-[node name="GruntSound" type="AudioStreamPlayer" parent="Background/GameController/Sounds" index="1"]
 
 stream = ExtResource( 9 )
 volume_db = 0.0
@@ -429,7 +603,7 @@ autoplay = false
 mix_target = 0
 bus = "Master"
 
-[node name="EvadeSound" type="AudioStreamPlayer" parent="Background/GameController/Sounds" index="2"]
+[node name="GruntSound" type="AudioStreamPlayer" parent="Background/GameController/Sounds" index="1"]
 
 stream = ExtResource( 10 )
 volume_db = 0.0
@@ -438,9 +612,18 @@ autoplay = false
 mix_target = 0
 bus = "Master"
 
-[node name="KOSound" type="AudioStreamPlayer" parent="Background/GameController/Sounds" index="3"]
+[node name="EvadeSound" type="AudioStreamPlayer" parent="Background/GameController/Sounds" index="2"]
 
 stream = ExtResource( 11 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="KOSound" type="AudioStreamPlayer" parent="Background/GameController/Sounds" index="3"]
+
+stream = ExtResource( 12 )
 volume_db = 5.0
 pitch_scale = 1.0
 autoplay = false
@@ -449,7 +632,7 @@ bus = "Master"
 
 [node name="BGM" type="AudioStreamPlayer" parent="Background/GameController/Sounds" index="4"]
 
-stream = ExtResource( 12 )
+stream = ExtResource( 13 )
 volume_db = -5.0
 pitch_scale = 1.0
 autoplay = true
@@ -458,7 +641,7 @@ bus = "Master"
 
 [node name="GetReadySound" type="AudioStreamPlayer" parent="Background/GameController/Sounds" index="5"]
 
-stream = ExtResource( 13 )
+stream = ExtResource( 14 )
 volume_db = 1.5
 pitch_scale = 1.0
 autoplay = false

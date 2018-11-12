@@ -20,7 +20,7 @@ public class AnimationSingle : AnimatedSprite
         {
             WFS.Global global = (WFS.Global)GetNode("/root/Global");
             global.singlePlayer = true;
-            global.GotoScene("res://Scenes/HeroSelector.tscn");
+            global.GotoScene("res://Scenes/SinglePlayerMode.tscn");
         }
     }
 }

@@ -22,7 +22,7 @@ namespace WFS
             Viewport root = GetTree().GetRoot();
             CurrentScene = root.GetChild(root.GetChildCount() - 1);
 
-            FirstCharacterSpriteFrameSelection = "mock";
+            FirstCharacterSpriteFrameSelection = "tryout";
             SecondCharacterSpriteFrameSelection = "tryout";
         }
 

@@ -60,15 +60,17 @@ namespace WFS
             characterChoices[playerOneIndex].Chosen(PlayerChoice.One);
             characterChoices[playerTwoIndex].Chosen(PlayerChoice.Two);
 
-            if (Input.IsActionJustReleased("ui_accept_second"))
-            {
-                characterChoices[playerOneIndex].ConfirmChoice(PlayerChoice.One);
-                playerOneLock = true;
-            }
+            //if (Input.IsActionJustReleased("ui_accept_second"))
+            //{
+            //    characterChoices[playerOneIndex].ConfirmChoice(PlayerChoice.One);
+            //    playerOneLock = true;
+            //}
             if (Input.IsActionJustReleased("ui_accept"))
             {
+				characterChoices[playerOneIndex].ConfirmChoice(PlayerChoice.One);
                 characterChoices[playerTwoIndex].ConfirmChoice(PlayerChoice.Two);
                 playerTwoLock = true;
+				playerOneLock = true;
             }
 
             if (playerOneLock && (playerTwoLock || singlePlayerMode))
